@@ -5,7 +5,8 @@ import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
-import {
+import
+ {
   dataPie,
   legendPie,
   dataSales,
@@ -16,7 +17,8 @@ import {
   optionsBar,
   responsiveBar,
   legendBar
-} from "variables/Variables.jsx";
+}
+ from "variables/Variables.jsx";
 
 class Dashboard extends Component {
   createLegend(json) {
@@ -27,7 +29,7 @@ class Dashboard extends Component {
       legend.push(" ");
       legend.push(json["names"][i]);
     }
-    return legend;
+  return legend;
   }
   render() {
     return (
@@ -59,7 +61,7 @@ class Dashboard extends Component {
                 statsValue="23"
                 statsIcon={<i className="fa fa-clock-o" />}
                 statsIconText="In the last hour"
-              />
+             />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard

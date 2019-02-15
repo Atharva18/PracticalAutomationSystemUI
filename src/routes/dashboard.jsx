@@ -6,6 +6,7 @@ import Icons from "views/Icons/Icons";
 import Maps from "views/Maps/Maps";
 import Notifications from "views/Notifications/Notifications";
 import Upgrade from "views/Upgrade/Upgrade";
+import AddRole from "views/AddRole/AddRole"
 
 const dashboardRoutes = [
   {
@@ -13,8 +14,14 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: "pe-7s-graph",
     component: Dashboard
-  },
+  },  
   {
+    path: "/Role",
+    name: "Add Role",
+    icon: "pe-7s-users",
+    component: AddRole
+  },
+  {  
     path: "/user",
     name: "Add User Profile",
     icon: "pe-7s-user",
