@@ -4,9 +4,11 @@
     -webkit-transition: all .34s;
     -moz-transition: all .34s;
 }
-
 .all-icons [class*="pe-"]{
     font-size: 40px;
+}
+table, th, td{
+    padding: 15px;
 }
 .all-icons input{
     border: 0;
