@@ -8,6 +8,7 @@ import Notifications from "views/Notifications/Notifications";
 import Upgrade from "views/Upgrade/Upgrade";
 import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
+import AddProgram from "views/AddProgram/AddProgram"
 
 const dashboardRoutes = [
   {
@@ -21,6 +22,12 @@ const dashboardRoutes = [
     name: "Add Role",
     icon: "pe-7s-users",
     component: AddRole
+  },
+  {
+    path: "/Program",
+    name: "Add Program",
+    icon: "pe-7s-study",
+    component: AddProgram
   },
   {
     path: "/Upload",
