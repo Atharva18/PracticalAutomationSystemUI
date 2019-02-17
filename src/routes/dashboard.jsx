@@ -7,6 +7,7 @@ import Maps from "views/Maps/Maps";
 import Notifications from "views/Notifications/Notifications";
 import Upgrade from "views/Upgrade/Upgrade";
 import AddRole from "views/AddRole/AddRole"
+import AddMultiple from "views/AddMultiple/AddMultiple";
 
 const dashboardRoutes = [
   {
@@ -20,6 +21,12 @@ const dashboardRoutes = [
     name: "Add Role",
     icon: "pe-7s-users",
     component: AddRole
+  },
+  {
+    path: "/Upload",
+    name: "Add multiple users",
+    icon: "pe-7s-cloud-upload",
+    component: AddMultiple
   },
   {  
     path: "/user",
