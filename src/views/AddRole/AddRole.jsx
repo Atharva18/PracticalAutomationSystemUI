@@ -21,8 +21,6 @@ class AddRole extends React.Component{
     handleSubmit(e)
     {
         e.preventDefault();
-
-
         var self = this;
         fetch('http://localhost:8023/role-create',{
             method: 'POST',
