@@ -8,7 +8,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 
 import { style } from "variables/Variables.jsx";
 
-import dashboardRoutes from "routes/dashboard.jsx";
+import admindashboardRoutes from "routes/admindashboard.jsx";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -107,7 +107,7 @@ class Dashboard extends Component {
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <Header {...this.props} />
           <Switch>
-            {dashboardRoutes.map((prop, key) => {
+            {admindashboardRoutes.map((prop, key) => {
               if (prop.name === "Notifications")
                 return (
                   <Route

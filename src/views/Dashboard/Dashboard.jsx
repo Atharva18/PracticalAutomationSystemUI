@@ -21,7 +21,7 @@ import
  from "variables/Variables.jsx";
 
 class Dashboard extends Component {
-  createLegend(json) {
+ /* createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
       var type = "fa fa-circle text-" + json["types"][i];
@@ -30,10 +30,10 @@ class Dashboard extends Component {
       legend.push(json["names"][i]);
     }
   return legend;
-  }
+  }*/
   render() {
     return (
-      <div className="content">
+     /* <div className="content">
         <Grid fluid>
           <Row>
             <Col lg={3} sm={6}>
@@ -158,6 +158,9 @@ class Dashboard extends Component {
             </Col>
           </Row>
         </Grid>
+      </div>*/
+      <div align='center'>
+        <h1>WELCOME ADMIN!</h1>
       </div>
     );
   }
