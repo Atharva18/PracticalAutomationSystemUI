@@ -1,132 +1,131 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 
-class AddProgram extends React.Component{
-    constructor(props){
+class AddProgram extends React.Component {
+    constructor(props) {
         super(props);
         this.onSubmit = this.handleSubmit.bind(this);
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
-        this.state={
+        this.state = {
             error: null,
             isLoaded: false,
-            branch:'',
+            branch: '',
             items: [],
-            text:'',
-            allprograms:[]
-
+            text: '',
+            allprograms: []
         }
     };
 
     handleChange1(e) {
-        this.setState({ text: e.target.value});
-      }
+        this.setState({ text: e.target.value });
+    }
 
-      handleChange2(e) {
-        this.setState({ allprograms: e.target.value});
-      }
+    handleChange2(e) {
+        this.setState({ allprograms: e.target.value });
+    }
 
-    handleSubmit(e)
-    {
+    handleSubmit(e) {
         e.preventDefault();
         var self = this;
-        fetch('http://localhost:8023/program-create',{
+        fetch('http://localhost:8023/program-create', {
             method: 'POST',
-            body:JSON.stringify({
+            body: JSON.stringify({
                 branch: self.refs.task1.value,
-                program:[{Year:self.refs.task2.value}]
-               
+                program: { Year: self.refs.task2.value }
+
             }),
-            headers: {"Content-Type": "application/json"}
+            headers: { "Content-Type": "application/json" }
 
-        }).then(response=>response.json())
-        .then(response => {
-           console.log(response.body);
-            if(response.result==='Success')
-            {
+        }).then(response => response.json())
+            .then(response => {
+                if (response.result === 'Success') {
+                    var newStateArray = this.state.items.slice();
+                    var obj =
+                    {
+                        branch: response.data.branch,
+                        program: {Year:response.data.program}
+                    }
+                    newStateArray.push(obj);
+                    this.setState({ items: newStateArray, text: '' })
 
-                
-            }
-         });
+                }
+            });
     }
 
     componentDidMount() {
         fetch("http://localhost:8023/findAll-program")
-        .then(res => res.json())  
-        .then(
-            (result) => 
-            {
-                console.log(result);
-            this.setState({
-                isLoaded: true,
-                items: result
-            });
-            },
-            (error) => {
-                console.log("In Error");
-            this.setState ({
-                isLoaded: true,
-                error
-            });
-            }
-        )
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    this.setState({
+                        isLoaded: true,
+                        items: result
+                    });
+                },
+                (error) => {
+                    console.log("In Error");
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
     }
-    render(){
+    render() {
         const { error, isLoaded, items } = this.state;
-        
-        return(
-        <div align="center">
-        <h3>Available Programs</h3>
-        <table>
-            <tr>
-                <th>
-                    <h3>Branch</h3>
-                </th>
-                <th>
-                    <h3>Programmes</h3>
-                </th>
-            </tr>
-           
-            {items.map(item =>(
-           
-           <tr>
-                <td>
-                 {item.branch}
-                </td>
-               <td>
-                {item.program.map(prog=>(
-                  <li>{prog.Year}</li> 
-                ))}
-               </td>
-            </tr>
-           
-            ))}
-       
-        </table>
-        <br></br>
-        <form onSubmit={this.onSubmit}>
-        <table>
-          <tr>
-            <td>Branch:</td>
-         <td>
-          <input type="text" onChange={this.handleChange1} value={this.state.text} ref="task1"></input>
-          </td>
-          
-            <br></br>
-            <br></br>
-            <td>
-            Program:
-            </td>
-            <td>
-          <input type="text" onChange={this.handleChange2} value={this.state.allprograms} ref="task2[]"></input>
-          </td>
-          </tr>
-            <tr>
-            <input type="submit" name="submit" value="Submit"></input>
-            </tr>        
-            </table>
-        </form>   
-        </div>
+        return (
+            <div align="center">
+                <h3>Available Programs</h3>
+                <table>
+                    <tr>
+                        <th>
+                            <h3>Branch</h3>
+                        </th>
+                        <th>
+                            <h3>Programmes</h3>
+                        </th>
+                    </tr>
+
+                    {items.map(item => (
+                        <tr>
+                            <td>
+                                {item.branch}
+                            </td>
+                            <td>
+                                {
+                                    item.program.map(prog => (
+                                    <li>{prog.Year}</li>))
+                                }
+                            </td>
+                        </tr>
+                    ))}
+
+                </table>
+                <br></br>
+                <form onSubmit={this.onSubmit}>
+                    <table>
+                        <tr>
+                            <td>Branch:</td>
+                            <td>
+                                <input type="text" onChange={this.handleChange1} value={this.state.text} ref="task1"></input>
+                            </td>
+
+                            <br></br>
+                            <br></br>
+                            <td>
+                                Program:
+                            </td>
+                            <td>
+                                <input type="text" onChange={this.handleChange2} value={this.state.allprograms} ref="task2"></input>
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+                    <input type="submit" name="submit" value="Submit"></input>
+                </form>
+            </div>
         )
     }
 }
