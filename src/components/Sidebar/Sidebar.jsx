@@ -92,7 +92,7 @@ class Sidebar extends Component {
           <div className="logo">
             
             <h3>
-              PCCOE Faculty
+              PCCOE FACULTY
             </h3>
           </div>
           <div className="sidebar-wrapper">

@@ -14,10 +14,10 @@ const facultydashboardRoutes = [
     component: Dashboard
   },  
   {
-    path: "/Role",
-    name: "Add Role",
-    icon: "pe-7s-users",
-    component: AddRole
+    path: "/Upload",
+    name: "Add multiple users",
+    icon: "pe-7s-cloud-upload",
+    component: AddMultiple
   },
   {
     path: "/Program",
@@ -25,12 +25,7 @@ const facultydashboardRoutes = [
     icon: "pe-7s-study",
     component: AddProgram
   },
-  {
-    path: "/Upload",
-    name: "Add multiple users",
-    icon: "pe-7s-cloud-upload",
-    component: AddMultiple
-  },
+  
   {  
     path: "/user",
     name: "Add User Profile",

@@ -5,7 +5,6 @@ import NotificationSystem from "react-notification-system";
 import Header from "components/Header/Header";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
-
 import { style } from "variables/Variables.jsx";
 
 import admindashboardRoutes from "routes/admindashboard.jsx";
@@ -43,8 +42,7 @@ class Dashboard extends Component {
       title: <span data-notify="icon" className="pe-7s-gift" />,
       message: (
         <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
+          Welcome <b>PCCOE {sessionStorage.getItem('type')}</b> 
         </div>
       ),
       level: level,
@@ -77,8 +75,8 @@ class Dashboard extends Component {
       title: <span data-notify="icon" className="pe-7s-gift" />,
       message: (
         <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
+          Welcome <b>PCCOE {sessionStorage.getItem('type')}</b>
+         
         </div>
       ),
       level: level,

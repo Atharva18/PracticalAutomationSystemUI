@@ -6,7 +6,6 @@ import {
 import { Card } from "components/Card/Card.jsx";
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
-import AddRole from 'views/AddRole/AddRole.jsx'
 import admindashboardRoutes from 'routes/admindashboard.jsx'
 import facultydashboardRoutes from 'routes/facultydashboard.jsx'
 class Login extends React.Component {
@@ -21,7 +20,7 @@ class Login extends React.Component {
       username: '',
       password: '',
       isAuthenticated: false,
-      status: true
+     
     }
   }
 
