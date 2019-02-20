@@ -8,6 +8,7 @@ import { Route, HashRouter, Switch } from 'react-router-dom';
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
 import AddRole from 'views/AddRole/AddRole.jsx'
 import admindashboardRoutes from 'routes/admindashboard.jsx'
+import facultydashboardRoutes from 'routes/facultydashboard.jsx'
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -23,32 +24,11 @@ class Login extends React.Component {
       status: true
     }
   }
-  /*function route(props) {
 
-      if(this.state.status===false)
-      {
-        alert('HERE!')
-      return null;
-      }
-      this.setState(
-        {
-          state:false
-        }
-      )
-      return (
-        <div>
-          <Route path='/dashboard' strict exact component={Dashboard} />
-          <HashRouter>
-            <Switch>
-              {admindashboardRoutes.map((prop, key) => {
-                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
-              })}
-            </Switch>
-          </HashRouter>
-        </div>
-      )
-    }
-*/
+  componentWillMount() {
+    sessionStorage.clear();
+  }
+
   handleChange1(e) {
     this.setState({ username: e.target.value });
   }
@@ -61,32 +41,60 @@ class Login extends React.Component {
     var username = this.refs.task1.value;
     var password = this.refs.task2.value;
 
-    if (username === 'Admin' && password === '123') {
-      this.setState({
-        username: '',
-        password: '',
-        isAuthenticated: true
-      })
-      this.props.history.push("/dashboard");
-    }
-    else {
-      this.setState({
-        username: '',
-        password: '',
-        isAuthenticated: false
-      })
-    }
-
+    var self = this;
+    fetch('http://localhost:8023/findType', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers: { "Content-Type": "application/json" }
+    }).then(response => response.json())
+      .then(response => {
+        console.log(response.result);
+        if (response.result === 'Success') {
+          this.setState({
+            isAuthenticated: true
+          })
+          sessionStorage.setItem('username', username);
+          sessionStorage.setItem('type', response.data[0].roll_type);
+          console.log(response.data[0].roll_type);
+          this.props.history.push("/dashboard");
+        }
+        else {
+          this.setState({
+            username: '',
+            password: '',
+            isAuthenticated: false
+          })
+        }
+      });
   }
   render() {
     const { isAuthenticated } = this.state;
-    if (isAuthenticated) {
+    let role= sessionStorage.getItem('type');
+    if (isAuthenticated && role=='admin') {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
           <HashRouter>
             <Switch>
               {admindashboardRoutes.map((prop, key) => {
+                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
+              })}
+            </Switch>
+          </HashRouter>
+        </div>
+      )
+    }
+    else if(isAuthenticated && role=='faculty')
+    {
+      return (
+        <div align='center'>
+          <Route path='/dashboard' strict exact component={Dashboard} />
+          <HashRouter>
+            <Switch>
+              {facultydashboardRoutes.map((prop, key) => {
                 return <Route path={prop.path} strict exact component={prop.component} key={key} />;
               })}
             </Switch>

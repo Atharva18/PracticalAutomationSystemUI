@@ -7,7 +7,7 @@ import imagine from "assets/img/sidebar-3.jpg";
 //import logo from "assets/img/reactlogo.png";
 
 import admindashboardRoutes from "routes/admindashboard.jsx";
-
+import facultydashboardRoutes from "routes/facultydashboard.jsx";
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +29,11 @@ class Sidebar extends Component {
     const sidebarBackground = {
     //  backgroundImage: "url(" + imagine + ")"
     };
+
+    let role =sessionStorage.getItem('type');
+
+    if(role=='admin')
+    {
     return (
       <div
         id="sidebar"
@@ -46,6 +51,7 @@ class Sidebar extends Component {
         <div className="sidebar-wrapper">
           <ul className="nav">
             {this.state.width <= 991 ? <HeaderLinks /> : null}
+    
             {admindashboardRoutes.map((prop, key) => {
               if (!prop.redirect)
                 return (
@@ -72,7 +78,56 @@ class Sidebar extends Component {
           </ul>
         </div>
       </div>
-    );
+    );}
+    else if(role=='faculty')
+    {
+      return (
+        <div
+          id="sidebar"
+          className="sidebar"
+          data-color="black"
+          data-image={imagine}
+        >
+          <div className="sidebar-background" style={sidebarBackground} />
+          <div className="logo">
+            
+            <h3>
+              PCCOE Faculty
+            </h3>
+          </div>
+          <div className="sidebar-wrapper">
+            <ul className="nav">
+              {this.state.width <= 991 ? <HeaderLinks /> : null}
+      
+              {facultydashboardRoutes.map((prop, key) => {
+                if (!prop.redirect)
+                  return (
+                    <li
+                      className={
+                        prop.upgrade
+                          ? "active active-pro"
+                          : this.activeRoute(prop.path)
+                      }
+                      key={key}
+                    >
+                      <NavLink
+                        to={prop.path}
+                        className="nav-link"
+                        activeClassName="active"
+                      >
+                        <i className={prop.icon} />
+                        <p>{prop.name}</p>
+                      </NavLink>
+                    </li>
+                  );
+                return null;
+              })}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
   }
 }
 

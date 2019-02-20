@@ -4,6 +4,7 @@ import { Navbar } from "react-bootstrap";
 import HeaderLinks from "./HeaderLinks.jsx";
 
 import admindashboardRoutes from "routes/admindashboard.jsx";
+import facultydashboardRoutes from "routes/facultydashboard.jsx";
 
 class Header extends Component {
   constructor(props) {
@@ -31,6 +32,9 @@ class Header extends Component {
   }
   getBrand() {
     var name;
+    let role= sessionStorage.getItem('type');
+    if(role=='admin')
+    {
     admindashboardRoutes.map((prop, key) => {
       if (prop.collapse) {
         prop.views.map((prop, key) => {
@@ -52,6 +56,31 @@ class Header extends Component {
       }
       return null;
     });
+    }else if (role=='faculty')
+    {
+
+      facultydashboardRoutes.map((prop, key) => {
+        if (prop.collapse) {
+          prop.views.map((prop, key) => {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+            return null;
+          });
+        } else {
+          if (prop.redirect) {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          } else {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          }
+        }
+        return null;
+      });
+    }
     return name;
   }
   render() {

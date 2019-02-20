@@ -9,6 +9,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import { style } from "variables/Variables.jsx";
 
 import admindashboardRoutes from "routes/admindashboard.jsx";
+import facultydashboardRoutes from "routes/facultydashboard.jsx";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -100,6 +101,11 @@ class Dashboard extends Component {
     }
   }
   render() {
+
+    let role=sessionStorage.getItem('type');
+
+    if(role=='admin')
+    {
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
@@ -131,7 +137,43 @@ class Dashboard extends Component {
           <Footer />
         </div>
       </div>
-    );
+    );}
+    else if(role=='faculty')
+    {
+      return (
+        <div className="wrapper">
+          <NotificationSystem ref="notificationSystem" style={style} />
+          <Sidebar {...this.props} />
+          <div id="main-panel" className="main-panel" ref="mainPanel">
+            <Header {...this.props} />
+            <Switch>
+              {facultydashboardRoutes.map((prop, key) => {
+                if (prop.name === "Notifications")
+                  return (
+                    <Route
+                      path={prop.path}
+                      key={key}
+                      render={routeProps => (
+                        <prop.component
+                          {...routeProps}
+                          handleClick={this.handleNotificationClick}
+                        />
+                      )}
+                    />
+                  );
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key} />;
+                return (
+                  <Route path={prop.path} component={prop.component} key={key} />
+                );
+              })}
+            </Switch>
+            <Footer />
+          </div>
+        </div>
+      );
+
+    }
   }
 }
 
