@@ -1,5 +1,7 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
+import Sidebar from "components/Sidebar/Sidebar";
+import Header from "components/Header/Header"
 
 class AddRole extends React.Component{
     constructor(props){
@@ -69,6 +71,8 @@ class AddRole extends React.Component{
         const { error, isLoaded, items } = this.state;
         return(
         <div align="center">
+         <Sidebar {...this.props} />
+    
         <table>
             <tr>
                 <th>

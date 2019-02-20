@@ -1,5 +1,7 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
+import Sidebar from "components/Sidebar/Sidebar";
+
 
 class AddProgram extends React.Component {
     constructor(props) {
@@ -77,6 +79,7 @@ class AddProgram extends React.Component {
         const { error, isLoaded, items } = this.state;
         return (
             <div align="center">
+             <Sidebar {...this.props} />
                 <h3>Available Programs</h3>
                 <table>
                     <tr>

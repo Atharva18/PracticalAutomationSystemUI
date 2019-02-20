@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from "components/Sidebar/Sidebar";
 
 class AddMultiple extends React.Component {
     constructor(props) {
@@ -58,6 +59,7 @@ class AddMultiple extends React.Component {
         const { error, isLoaded, items } = this.state;
         return (
             <div align="center">
+             <Sidebar {...this.props} />
                 <h2>Add multiple students:</h2>
                 <div>
                     <form onSubmit={this.onFormSubmit}>
