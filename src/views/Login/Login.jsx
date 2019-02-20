@@ -7,7 +7,6 @@ import { Card } from "components/Card/Card.jsx";
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
 import AddRole from 'views/AddRole/AddRole.jsx'
-
 import admindashboardRoutes from 'routes/admindashboard.jsx'
 class Login extends React.Component {
   constructor(props) {
@@ -20,15 +19,13 @@ class Login extends React.Component {
       isLoaded: false,
       username: '',
       password: '',
+      isAuthenticated: false,
       status: true
-
-
     }
-  };
-
+  }
   /*function route(props) {
 
-      if(this.state.status==false)
+      if(this.state.status===false)
       {
         alert('HERE!')
       return null;
@@ -51,10 +48,7 @@ class Login extends React.Component {
         </div>
       )
     }
-
 */
-
-
   handleChange1(e) {
     this.setState({ username: e.target.value });
   }
@@ -70,51 +64,60 @@ class Login extends React.Component {
     if (username === 'Admin' && password === '123') {
       this.setState({
         username: '',
-        password: ''
+        password: '',
+        isAuthenticated: true
       })
       this.props.history.push("/dashboard");
     }
     else {
       this.setState({
         username: '',
-        password: ''
+        password: '',
+        isAuthenticated: false
       })
     }
 
   }
   render() {
+    const { isAuthenticated } = this.state;
+    if (isAuthenticated) {
+      return (
+        <div align='center'>
+          <Route path='/dashboard' strict exact component={Dashboard} />
+          <HashRouter>
+            <Switch>
+              {admindashboardRoutes.map((prop, key) => {
+                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
+              })}
+            </Switch>
+          </HashRouter>
+        </div>
+      )
+    }
+    else {
+      return (
 
-
-
-    return (
-      <div align='center'>
-        <Route path='/dashboard' strict exact component={Dashboard} />
-        <HashRouter>
-          <Switch>
-            {admindashboardRoutes.map((prop, key) => {
-              return <Route path={prop.path} strict exact component={prop.component} key={key} />;
-            })}
-          </Switch>
-        </HashRouter>
-        <Grid fluid>
-          <Card
-            title="Login"
-            content=
-            {
-              <form onSubmit={this.onSubmit}>
-                Username <input type="text" onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
-                <br></br>
-                <br></br>
-                Password <input type="password" onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
-                <br></br>
-                <br></br>
-                <input type="submit" value="Submit"></input>
-              </form>
-            }
-          />
-        </Grid>
-      </div>
-    )
+        <div align='center'>
+          <Grid fluid>
+            <Card
+              title="Login"
+              content=
+              {
+                <form onSubmit={this.onSubmit}>
+                  Username <input type="text" onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
+                  <br></br>
+                  <br></br>
+                  Password <input type="password" onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
+                  <br></br>
+                  <br></br>
+                  <input type="submit" value="Submit"></input>
+                </form>
+              }
+            />
+          </Grid>
+        </div>
+      )
+    }
   }
 }
 export default Login;
