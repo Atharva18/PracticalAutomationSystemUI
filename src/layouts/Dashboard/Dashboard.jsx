@@ -209,7 +209,7 @@ class Dashboard extends Component {
         </div>
       );
     }
-    else if(role=='student')
+    else if(role=='user')
     {
       return (
         <div className="wrapper">

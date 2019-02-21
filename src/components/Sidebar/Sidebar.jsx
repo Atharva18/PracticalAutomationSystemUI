@@ -177,7 +177,7 @@ class Sidebar extends Component {
         </div>
       );
     }
-    else if(role=='student')
+    else if(role=='user')
     {
       return (
         <div
@@ -190,7 +190,7 @@ class Sidebar extends Component {
           <div className="logo">
             
             <h3>
-              PCCOE STUDENT
+              PCCOE user
             </h3>
           </div>
           <div className="sidebar-wrapper">

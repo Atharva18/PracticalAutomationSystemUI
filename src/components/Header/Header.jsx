@@ -108,7 +108,7 @@ class Header extends Component {
         return null;
       });
     }
-    else if(role=='student')
+    else if(role=='user')
     {
       studentdashboardRoutes.map((prop, key) => {
         if (prop.collapse) {

@@ -124,7 +124,7 @@ class Login extends React.Component {
         </div>
       )
     }
-    else if(isAuthenticated && role=='student')
+    else if(isAuthenticated && role=='user')
     {
       return (
         <div align='center'>

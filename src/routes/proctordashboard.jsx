@@ -51,7 +51,7 @@ const proctordashboardRoutes = [
     icon: "pe-7s-rocket",
     component: Upgrade
   },*/
-//  { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
+ { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
 ];
 
 export default proctordashboardRoutes;
