@@ -9,6 +9,8 @@ import { style } from "variables/Variables.jsx";
 
 import admindashboardRoutes from "routes/admindashboard.jsx";
 import facultydashboardRoutes from "routes/facultydashboard.jsx";
+import proctordashboardRoutes from "routes/proctordashboard.jsx";
+import studentdashboardRoutes from "routes/studentdashboard.jsx";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -171,6 +173,76 @@ class Dashboard extends Component {
         </div>
       );
 
+    }
+    else if(role=='proctor')
+    {
+      return (
+        <div className="wrapper">
+          <NotificationSystem ref="notificationSystem" style={style} />
+          <Sidebar {...this.props} />
+          <div id="main-panel" className="main-panel" ref="mainPanel">
+            <Header {...this.props} />
+            <Switch>
+              {proctordashboardRoutes.map((prop, key) => {
+                if (prop.name === "Notifications")
+                  return (
+                    <Route
+                      path={prop.path}
+                      key={key}
+                      render={routeProps => (
+                        <prop.component
+                          {...routeProps}
+                          handleClick={this.handleNotificationClick}
+                        />
+                      )}
+                    />
+                  );
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key} />;
+                return (
+                  <Route path={prop.path} component={prop.component} key={key} />
+                );
+              })}
+            </Switch>
+            <Footer />
+          </div>
+        </div>
+      );
+    }
+    else if(role=='student')
+    {
+      return (
+        <div className="wrapper">
+          <NotificationSystem ref="notificationSystem" style={style} />
+          <Sidebar {...this.props} />
+          <div id="main-panel" className="main-panel" ref="mainPanel">
+            <Header {...this.props} />
+            <Switch>
+              {studentdashboardRoutes.map((prop, key) => {
+                if (prop.name === "Notifications")
+                  return (
+                    <Route
+                      path={prop.path}
+                      key={key}
+                      render={routeProps => (
+                        <prop.component
+                          {...routeProps}
+                          handleClick={this.handleNotificationClick}
+                        />
+                      )}
+                    />
+                  );
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key} />;
+                return (
+                  <Route path={prop.path} component={prop.component} key={key} />
+                );
+              })}
+            </Switch>
+            <Footer />
+          </div>
+        </div>
+      );
     }
   }
 }

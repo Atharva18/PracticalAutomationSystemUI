@@ -10,50 +10,9 @@ import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
 
-const admindashboardRoutes = [
+const studentdashboardRoutes = [
  
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "pe-7s-graph",
-    component: Dashboard
-  },  
-  {
-    path: "/Role",
-    name: "Add Role",
-    icon: "pe-7s-users",
-    component: AddRole
-  },
-  {
-    path: "/Program",
-    name: "Add Program",
-    icon: "pe-7s-study",
-    component: AddProgram
-  },
-  {
-    path: "/Upload",
-    name: "Add multiple users",
-    icon: "pe-7s-cloud-upload",
-    component: AddMultiple
-  },
-  {  
-    path: "/user",
-    name: "Add User Profile",
-    icon: "pe-7s-user",
-    component: UserProfile
-  },
-  {
-    path: "/table",
-    name: "Table List",
-    icon: "pe-7s-note2",
-    component: TableList
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "pe-7s-news-paper",
-    component: Typography
-  },
+  
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },*/
   {
@@ -72,4 +31,4 @@ const admindashboardRoutes = [
 //  { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
 ];
 
-export default admindashboardRoutes;
+export default studentdashboardRoutes;

@@ -10,26 +10,8 @@ import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
 
-const admindashboardRoutes = [
+const proctordashboardRoutes = [
  
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "pe-7s-graph",
-    component: Dashboard
-  },  
-  {
-    path: "/Role",
-    name: "Add Role",
-    icon: "pe-7s-users",
-    component: AddRole
-  },
-  {
-    path: "/Program",
-    name: "Add Program",
-    icon: "pe-7s-study",
-    component: AddProgram
-  },
   {
     path: "/Upload",
     name: "Add multiple users",
@@ -72,4 +54,4 @@ const admindashboardRoutes = [
 //  { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
 ];
 
-export default admindashboardRoutes;
+export default proctordashboardRoutes;

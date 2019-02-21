@@ -2,10 +2,13 @@ import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header"
+import {Redirect,Route} from 'react-router-dom';
 
 class AddRole extends React.Component{
     constructor(props){
         super(props);
+
+
         this.onSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state={
@@ -48,6 +51,7 @@ class AddRole extends React.Component{
     }
 
     componentDidMount() {
+
         fetch("http://localhost:8023/findAll-role")
         .then(res => res.json())  
         .then(
@@ -72,7 +76,7 @@ class AddRole extends React.Component{
         return(
         <div align="center">
          <Sidebar {...this.props} />
-    
+         
         <table>
             <tr>
                 <th>

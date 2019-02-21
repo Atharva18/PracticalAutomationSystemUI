@@ -17,7 +17,7 @@ ReactDOM.render(
     <Switch>
       {indexRoutes.map((prop, key) =>
        {
-        return <Route strict path={prop.path} component={prop.component} key={key} />;
+        return <Route  path={prop.path} component={prop.component} key={key} />;
       })}
     </Switch>
   </HashRouter>

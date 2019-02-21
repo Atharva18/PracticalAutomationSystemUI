@@ -8,6 +8,10 @@ import { Route, HashRouter, Switch } from 'react-router-dom';
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
 import admindashboardRoutes from 'routes/admindashboard.jsx'
 import facultydashboardRoutes from 'routes/facultydashboard.jsx'
+import proctordashboardRoutes from 'routes/proctordashboard.jsx'
+import studentdashboardRoutes from 'routes/studentdashboard.jsx'
+
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +40,8 @@ class Login extends React.Component {
     this.setState({ password: e.target.value });
   }
   handleSubmit(e) {
+
+    e.preventDefault();
 
     var username = this.refs.task1.value;
     var password = this.refs.task2.value;
@@ -76,10 +82,11 @@ class Login extends React.Component {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
+          
           <HashRouter>
             <Switch>
               {admindashboardRoutes.map((prop, key) => {
-                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
+                return <Route strict exact path={prop.path} component={prop.component} key={key} />;
               })}
             </Switch>
           </HashRouter>
@@ -101,9 +108,39 @@ class Login extends React.Component {
         </div>
       )
     }
+    else if(isAuthenticated && role=='proctor')
+    {
+      return (
+        <div align='center'>
+          <Route path='/dashboard' strict exact component={Dashboard} />
+          <HashRouter>
+            <Switch>
+              {proctordashboardRoutes.map((prop, key) => {
+                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
+              })}
+            </Switch>
+          </HashRouter>
+        </div>
+      )
+    }
+    else if(isAuthenticated && role=='student')
+    {
+      return (
+        <div align='center'>
+          <Route path='/dashboard' strict exact component={Dashboard} />
+          <HashRouter>
+            <Switch>
+              {studentdashboardRoutes.map((prop, key) => {
+                return <Route path={prop.path} strict exact component={prop.component} key={key} />;
+              })}
+            </Switch>
+          </HashRouter>
+        </div>
+      )
+
+    }
     else {
       return (
-
         <div align='center'>
           <Grid fluid>
             <Card
