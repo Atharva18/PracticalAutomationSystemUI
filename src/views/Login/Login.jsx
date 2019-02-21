@@ -29,7 +29,7 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    sessionStorage.clear();
+   // sessionStorage.clear();
   }
 
   handleChange1(e) {
@@ -63,6 +63,7 @@ class Login extends React.Component {
           })
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('type', response.data[0].roll_type);
+          sessionStorage.setItem('isAuth',true);
           console.log(response.data[0].roll_type);
           this.props.history.push("/dashboard");
         }
@@ -76,7 +77,7 @@ class Login extends React.Component {
       });
   }
   render() {
-    const { isAuthenticated } = this.state;
+    const isAuthenticated = sessionStorage.getItem('isAuth');
     let role= sessionStorage.getItem('type');
     if (isAuthenticated && role=='admin') {
       return (
