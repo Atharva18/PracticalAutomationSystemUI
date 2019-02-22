@@ -247,6 +247,9 @@ var style = {
 // // // For tables
 // //
 //
+
+const roleheads=['Type'];
+
 const thArray = ["ID", "Name", "Salary", "Country", "City"];
 const tdArray = [
   ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
@@ -591,6 +594,7 @@ module.exports = {
   responsiveSales,
   legendSales,
   dataBar,
+  roleheads,
   optionsBar,
   responsiveBar,
   legendBar // For charts (Dashboard view)

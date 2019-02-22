@@ -2,108 +2,118 @@ import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header"
-import {Redirect,Route} from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { Grid, Row, Col, Table,Button } from "react-bootstrap"
+import roleheads from "variables/Variables.jsx"
+import Card from "components/Card/Card.jsx";
 
-class AddRole extends React.Component{
-    constructor(props){
+
+class AddRole extends React.Component {
+    constructor(props) {
         super(props);
-
-
         this.onSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.state={
+        this.state = {
             error: null,
             isLoaded: false,
             items: [],
-            text:''
+            text: ''
 
         }
     };
 
     handleChange(e) {
         this.setState({ text: e.target.value });
-      }
-    handleSubmit(e)
-    {
+    }
+    handleSubmit(e) {
         e.preventDefault();
         var self = this;
-        fetch('http://localhost:8023/role-create',{
+        fetch('http://localhost:8023/role-create', {
             method: 'POST',
-            body:JSON.stringify({
+            body: JSON.stringify({
                 Type: self.refs.task.value
             }),
-            headers: {"Content-Type": "application/json"}
-        }).then(response=>response.json())
-        .then(response => {
-           console.log(response.body);
-            if(response.result==='Success')
-            {
+            headers: { "Content-Type": "application/json" }
+        }).then(response => response.json())
+            .then(response => {
+                console.log(response.body);
+                if (response.result === 'Success') {
 
-                var newStateArray = this.state.items.slice();
-                var obj=
-                {
-                    Type:response.data
+                    var newStateArray = this.state.items.slice();
+                    var obj =
+                    {
+                        Type: response.data
+                    }
+                    newStateArray.push(obj);
+                    this.setState({ items: newStateArray, text: '' })
                 }
-                newStateArray.push(obj);
-                this.setState({items:newStateArray,text:''})
-            }
-         });
+            });
     }
 
     componentDidMount() {
 
         fetch("http://localhost:8023/findAll-role")
-        .then(res => res.json())  
-        .then(
-            (result) => {
-                console.log(result);
-            this.setState({
-                isLoaded: true,
-                items: result.data
-            });
-            },
-            (error) => {
-                console.log("In Error");
-            this.setState ({
-                isLoaded: true,
-                error
-            });
-            }
-        )
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    this.setState({
+                        isLoaded: true,
+                        items: result.data
+                    });
+                },
+                (error) => {
+                    console.log("In Error");
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
     }
-    render(){
+    render() {
         const { error, isLoaded, items } = this.state;
-        return(
-        <div align="center">
-         <Sidebar {...this.props} />
-         
-        <table>
-            <tr>
-                <th>
-                    <h3><b> Available Roles</b> </h3>
-                </th>
-            </tr>
-           
-            {items.map(item =>(
-            <tr>
-                <td>
-                 {item.Type}
-                </td>
-                 <td>
-                    <h5>Edit</h5>
-                 </td>
-            </tr>
-            ))}
-       
-        </table>
-        <br></br>
-        <form onSubmit={this.onSubmit}>
-            <input type="text" onChange={this.handleChange} value={this.state.text} ref="task"></input>
-            <br></br>
-            <br></br>
-            <input type="submit" name="submit" value="Submit"></input>
-        </form>   
-        </div>
+        return (
+            <div align="center">
+                <Sidebar {...this.props} />
+                <Col md={12}>
+                    <Card
+                        title="ADD ROLE"
+                        category="AVAILABLE ROLES"
+                        ctTableFullWidth
+                        ctTableResponsive
+                        content={
+                            <Table striped hover responsive='sm'>
+                                <thead>
+                                    <tr>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {items.map((item) => {
+                                        return (
+                                            <tr>
+                                                <td align='center'>{item.Type.toUpperCase()}</td>
+                                                <td align='center'>
+                                                    <h5>EDIT</h5>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </Table>
+                        }
+                    />
+                </Col>
+
+                <br></br>
+                <form onSubmit={this.onSubmit}>
+                    <input type="text" onChange={this.handleChange} value={this.state.text} ref="task"></input>
+                    <br></br>
+                    <br></br>
+                    <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
+                </form>
+            </div>
         )
     }
 }

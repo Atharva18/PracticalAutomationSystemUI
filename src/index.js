@@ -15,12 +15,11 @@ import BrowserRouter from "react-router-dom/BrowserRouter";
 ReactDOM.render(
   <HashRouter>
     <Switch>
-      {indexRoutes.map((prop, key) =>
-       {
-        return <Route  path={prop.path} component={prop.component} key={key} />;
+      {indexRoutes.map((prop, key) => {
+        return <Route path={prop.path} component={prop.component} key={key} />;
       })}
     </Switch>
   </HashRouter>
-  , 
+  ,
   document.getElementById("root")
 );

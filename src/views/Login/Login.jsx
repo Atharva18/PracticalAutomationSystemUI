@@ -24,12 +24,12 @@ class Login extends React.Component {
       username: '',
       password: '',
       isAuthenticated: false,
-     
+
     }
   }
 
   componentWillMount() {
-   // sessionStorage.clear();
+    // sessionStorage.clear();
   }
 
   handleChange1(e) {
@@ -63,7 +63,7 @@ class Login extends React.Component {
           })
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('type', response.data[0].roll_type);
-          sessionStorage.setItem('isAuth',true);
+          sessionStorage.setItem('isAuth', true);
           console.log(response.data[0].roll_type);
           this.props.history.push("/dashboard");
         }
@@ -78,12 +78,12 @@ class Login extends React.Component {
   }
   render() {
     const isAuthenticated = sessionStorage.getItem('isAuth');
-    let role= sessionStorage.getItem('type');
-    if (isAuthenticated && role=='admin') {
+    let role = sessionStorage.getItem('type');
+    if (isAuthenticated && role == 'admin') {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
-          
+
           <HashRouter>
             <Switch>
               {admindashboardRoutes.map((prop, key) => {
@@ -94,8 +94,7 @@ class Login extends React.Component {
         </div>
       )
     }
-    else if(isAuthenticated && role=='faculty')
-    {
+    else if (isAuthenticated && role == 'faculty') {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
@@ -109,8 +108,7 @@ class Login extends React.Component {
         </div>
       )
     }
-    else if(isAuthenticated && role=='proctor')
-    {
+    else if (isAuthenticated && role == 'proctor') {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
@@ -124,8 +122,7 @@ class Login extends React.Component {
         </div>
       )
     }
-    else if(isAuthenticated && role=='user')
-    {
+    else if (isAuthenticated && role == 'user') {
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />

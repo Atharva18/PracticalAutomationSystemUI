@@ -29,7 +29,7 @@ class AddMultiple extends React.Component {
     fileUpload(file) {
         const formData = new FormData();
         formData.append('file', file);
-        const url = 'http://localhost:8026/csv-preview';
+        const url = 'http://localhost:8023/csv-preview';
         const config = {
             method: 'POST',
             body: formData,
