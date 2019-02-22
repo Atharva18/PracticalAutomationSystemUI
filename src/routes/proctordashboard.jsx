@@ -6,12 +6,17 @@ import Typography from "views/Typography/Typography";
 //import Maps from "views/Maps/Maps";
 import Notifications from "views/Notifications/Notifications";
 //import Upgrade from "views/Upgrade/Upgrade";
-import AddRole from "views/AddRole/AddRole"
+
 import AddMultiple from "views/AddMultiple/AddMultiple";
-import AddProgram from "views/AddProgram/AddProgram"
+
 
 const proctordashboardRoutes = [
- 
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: "pe-7s-graph",
+    component: Dashboard
+  },  
   {
     path: "/Upload",
     name: "Add multiple users",

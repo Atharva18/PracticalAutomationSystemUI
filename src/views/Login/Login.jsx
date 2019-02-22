@@ -16,6 +16,7 @@ import admindashboardRoutes from 'routes/admindashboard.jsx'
 import facultydashboardRoutes from 'routes/facultydashboard.jsx'
 import proctordashboardRoutes from 'routes/proctordashboard.jsx'
 import studentdashboardRoutes from 'routes/studentdashboard.jsx'
+import PropTypes from 'prop-types';
 
 
 class Login extends React.Component {
@@ -155,12 +156,12 @@ class Login extends React.Component {
                   <form onSubmit={this.onSubmit}>
                     <ControlLabel style={{ color: 'black' }}>Username</ControlLabel>
                     <br></br>
-                    <input type="text" onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
+                    <input type="text" required onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
                     <br></br>
                     <br></br>
                     <ControlLabel style={{ color: 'black' }}>Password</ControlLabel>
                     <br></br> 
-                    <input type="password" onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
+                    <input type="password" required onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
                     <br></br>
                     <br></br>
                     <Button style={{ color: 'black' }} type="submit" name="submit" value="Submit">SUBMIT</Button>
@@ -174,4 +175,12 @@ class Login extends React.Component {
     }
   }
 }
+
+Login.PropTypes=
+{
+  username:PropTypes.string.isRequired,
+  password:PropTypes.string.isRequired
+}
+
+
 export default Login;

@@ -1,11 +1,11 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
-import Header from "components/Header/Header"
-import { Redirect, Route } from 'react-router-dom';
+
 import { Grid, Row, Col, Table,Button } from "react-bootstrap"
-import roleheads from "variables/Variables.jsx"
+
 import Card from "components/Card/Card.jsx";
+import PropTypes from 'prop-types';
 
 
 class AddRole extends React.Component {
@@ -108,7 +108,7 @@ class AddRole extends React.Component {
 
                 <br></br>
                 <form onSubmit={this.onSubmit}>
-                    <input type="text" onChange={this.handleChange} value={this.state.text} ref="task"></input>
+                    <input type="text" required pattern="[A-Za-z]" onChange={this.handleChange} value={this.state.text} ref="task"></input>
                     <br></br>
                     <br></br>
                     <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
@@ -117,6 +117,13 @@ class AddRole extends React.Component {
         )
     }
 }
+
+AddRole.PropTypes=
+{
+  text:PropTypes.string.isRequired,
+}
+
+
 export default AddRole;
 
 
