@@ -108,7 +108,7 @@ class AddRole extends React.Component {
 
                 <br></br>
                 <form onSubmit={this.onSubmit}>
-                    <input type="text" required pattern="[A-Za-z]" onChange={this.handleChange} value={this.state.text} ref="task"></input>
+                    <input type="text" required pattern='[A-Za-z]+' onChange={this.handleChange} value={this.state.text} ref="task"></input>
                     <br></br>
                     <br></br>
                     <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>

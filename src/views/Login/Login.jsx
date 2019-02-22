@@ -7,6 +7,7 @@ import {
   FormControl,
   FormGroup,
   ControlLabel,
+  Alert,
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
@@ -68,6 +69,7 @@ class Login extends React.Component {
           this.setState({
             isAuthenticated: true
           })
+          
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('type', response.data[0].roll_type);
           sessionStorage.setItem('isAuth', true);
@@ -86,9 +88,13 @@ class Login extends React.Component {
   render() {
     const isAuthenticated = sessionStorage.getItem('isAuth');
     let role = sessionStorage.getItem('type');
+
+     
+
     if (isAuthenticated && role == 'admin') {
       return (
         <div align='center'>
+        
           <Route path='/dashboard' strict exact component={Dashboard} />
 
           <HashRouter>

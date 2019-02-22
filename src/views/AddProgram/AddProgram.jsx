@@ -100,7 +100,7 @@ class AddProgram extends React.Component {
                                     {items.map(item => (
                                         <tr>
                                             <td align="right">
-                                                {item.branch}
+                                                {item.branch.toUpperCase()}
                                             </td>
                                             <td align="center">
                                                 {
@@ -123,7 +123,7 @@ class AddProgram extends React.Component {
                         <tr>
                             <td>Branch:</td>
                             <td>
-                                <input type="text" required pattern="[A-Za-z]" onChange={this.handleChange1} value={this.state.text} ref="task1"></input>
+                                <input type="text" required pattern="[A-Za-z]+" onChange={this.handleChange1} value={this.state.text} ref="task1"></input>
                             </td>
 
                             <br></br>
@@ -132,7 +132,7 @@ class AddProgram extends React.Component {
                                 Program:
                             </td>
                             <td>
-                                <input type="text" pattern="[A-Za-z]" required onChange={this.handleChange2} value={this.state.allprograms} ref="task2"></input>
+                                <input type="text" min='2000' max='2100' required onChange={this.handleChange2} value={this.state.allprograms} ref="task2"></input>
                             </td>
                         </tr>
                     </table>
