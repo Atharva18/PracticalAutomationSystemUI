@@ -1,6 +1,8 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
+import { Grid, Row, Col, Table,Button } from "react-bootstrap"
+import Card from "components/Card/Card.jsx";
 
 
 class AddProgram extends React.Component {
@@ -46,7 +48,7 @@ class AddProgram extends React.Component {
                     var obj =
                     {
                         branch: response.data.branch,
-                        program: {Year:response.data.program}
+                        program: { Year: response.data.program }
                     }
                     newStateArray.push(obj);
                     this.setState({ items: newStateArray, text: '' })
@@ -79,33 +81,42 @@ class AddProgram extends React.Component {
         const { error, isLoaded, items } = this.state;
         return (
             <div align="center">
-             <Sidebar {...this.props} />
-                <h3>Available Programs</h3>
-                <table>
-                    <tr>
-                        <th>
-                            <h3>Branch</h3>
-                        </th>
-                        <th>
-                            <h3>Programmes</h3>
-                        </th>
-                    </tr>
+                <Sidebar {...this.props} />
 
-                    {items.map(item => (
-                        <tr>
-                            <td>
-                                {item.branch}
-                            </td>
-                            <td>
-                                {
-                                    item.program.map(prog => (
-                                    <li>{prog.Year}</li>))
-                                }
-                            </td>
-                        </tr>
-                    ))}
+                <Col md={12}>
+                    <Card
+                        title="ADD PROGRAMS"
+                        category="AVAILABLE BRANCHES & PROGRAMS"
+                        ctTableFullWidth
+                        ctTableResponsive
+                        content={
+                            <Table striped hover size="sm">
+                                <thead>
+                                    <tr>
 
-                </table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {items.map(item => (
+                                        <tr>
+                                            <td align="right">
+                                            {item.branch}
+                                            </td>
+                                            <td align="center">
+                                                {
+                                                    item.program.map(prog => (
+                                                        <li>{prog.Year}</li>))
+                                                }
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        }
+                    />
+                </Col>
+
+                
                 <br></br>
                 <form onSubmit={this.onSubmit}>
                     <table>
