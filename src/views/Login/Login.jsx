@@ -1,6 +1,12 @@
 import React from 'react';
 import {
   Grid,
+  Image,
+  Button,
+  Form,
+  FormControl,
+  FormGroup,
+  ControlLabel,
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
@@ -140,20 +146,26 @@ class Login extends React.Component {
     else {
       return (
         <div align='center'>
-          <Grid fluid>
-            <Card
+          <Grid>
+            <Card style={{ width: '10rem' }}
               title="Login"
               content=
               {
-                <form onSubmit={this.onSubmit}>
-                  Username <input type="text" onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
-                  <br></br>
-                  <br></br>
-                  Password <input type="password" onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
-                  <br></br>
-                  <br></br>
-                  <input type="submit" value="Submit"></input>
-                </form>
+                <Form>
+                  <form onSubmit={this.onSubmit}>
+                    <ControlLabel style={{ color: 'black' }}>Username</ControlLabel>
+                    <br></br>
+                    <input type="text" onChange={this.handleChange1} value={this.state.username} ref="task1"></input>
+                    <br></br>
+                    <br></br>
+                    <ControlLabel style={{ color: 'black' }}>Password</ControlLabel>
+                    <br></br> 
+                    <input type="password" onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
+                    <br></br>
+                    <br></br>
+                    <Button style={{ color: 'black' }} type="submit" name="submit" value="Submit">SUBMIT</Button>
+                  </form>
+                </Form>
               }
             />
           </Grid>
