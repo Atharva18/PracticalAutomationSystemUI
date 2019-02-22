@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
 class HeaderLinks extends Component {
+
+
   render() {
+   
     const notification = (
       <div>
         <i className="fa fa-globe" />
@@ -12,6 +15,7 @@ class HeaderLinks extends Component {
       </div>
     );
     return (
+      
       <div>
         <Nav>
           <NavItem eventKey={1} href="#">
@@ -52,7 +56,12 @@ class HeaderLinks extends Component {
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={3} href="#">
+          <NavItem eventKey={3} onClick={
+            ()=>{
+              sessionStorage.clear();
+              document.location.href = "/"; 
+            }
+          }>
             Log out
           </NavItem>
         </Nav>
@@ -60,5 +69,7 @@ class HeaderLinks extends Component {
     );
   }
 }
+
+
 
 export default HeaderLinks;

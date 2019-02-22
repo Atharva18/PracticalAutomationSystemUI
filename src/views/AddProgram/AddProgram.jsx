@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
-import { Grid, Row, Col, Table,Button } from "react-bootstrap"
+import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
 
 
@@ -100,7 +100,7 @@ class AddProgram extends React.Component {
                                     {items.map(item => (
                                         <tr>
                                             <td align="right">
-                                            {item.branch}
+                                                {item.branch}
                                             </td>
                                             <td align="center">
                                                 {
@@ -116,7 +116,7 @@ class AddProgram extends React.Component {
                     />
                 </Col>
 
-                
+
                 <br></br>
                 <form onSubmit={this.onSubmit}>
                     <table>
