@@ -9,6 +9,7 @@ import Notifications from "views/Notifications/Notifications";
 import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
+import AddSingle from "views/AddSingle/AddSingle"
 
 const admindashboardRoutes = [
  
@@ -37,10 +38,10 @@ const admindashboardRoutes = [
     component: AddMultiple
   },
   {  
-    path: "/user",
-    name: "Add User Profile",
+    path: "/AddSingle",
+    name: "Add User",
     icon: "pe-7s-user",
-    component: UserProfile
+    component: AddSingle
   },
   {
     path: "/table",
