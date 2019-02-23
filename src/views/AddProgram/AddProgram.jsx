@@ -82,7 +82,7 @@ class AddProgram extends React.Component {
         return (
             <div align="center">
                 <Sidebar {...this.props} />
-
+                <div id="main-panel" className="main-panel" ref="mainPanel">
                 <Col md={12}>
                     <Card
                         title="ADD PROGRAMS"
@@ -99,7 +99,7 @@ class AddProgram extends React.Component {
                                 <tbody>
                                     {items.map(item => (
                                         <tr>
-                                            <td align="right">
+                                            <td align="center">
                                                 {item.branch.toUpperCase()}
                                             </td>
                                             <td align="center">
@@ -139,6 +139,7 @@ class AddProgram extends React.Component {
                     <br></br>
                     <input type="submit" name="submit" value="Submit"></input>
                 </form>
+                </div>
             </div>
         )
     }

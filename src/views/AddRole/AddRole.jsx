@@ -49,7 +49,7 @@ class AddRole extends React.Component {
                 }
             });
     }
-
+    
     componentDidMount() {
 
         fetch("http://localhost:8023/findAll-role")
@@ -76,6 +76,7 @@ class AddRole extends React.Component {
         return (
             <div align="center">
                 <Sidebar {...this.props} />
+                <div id="main-panel" className="main-panel" ref="mainPanel">
                 <Col md={12}>
                     <Card
                         title="ADD ROLE"
@@ -113,6 +114,7 @@ class AddRole extends React.Component {
                     <br></br>
                     <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
                 </form>
+                </div>
             </div>
         )
     }
