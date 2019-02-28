@@ -36,23 +36,27 @@ class AddProgram extends React.Component {
             method: 'POST',
             body: JSON.stringify({
                 branch: self.refs.task1.value,
-                program: { Year: self.refs.task2.value }
+                program: self.refs.task2.value
 
             }),
             headers: { "Content-Type": "application/json" }
 
         }).then(response => response.json())
             .then(response => {
+                
                 if (response.result === 'Success') {
                     var newStateArray = this.state.items.slice();
                     var obj =
                     {
                         branch: response.data.branch,
-                        program: { Year: response.data.program }
+                        program: response.data.program 
                     }
-                    newStateArray.push(obj);
-                    this.setState({ items: newStateArray, text: '' })
-
+                    var index = newStateArray.findIndex(val => val.branch == obj.branch)
+                    console.log(index)
+                    console.log(obj)
+                    newStateArray[index] = obj 
+                    this.setState({ items: newStateArray, text: '', allprograms: [] })
+                    console.log(response)   
                 }
             });
     }
