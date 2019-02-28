@@ -52,7 +52,6 @@ class AddProgram extends React.Component {
                         program: response.data.program 
                     }
                     var index = newStateArray.findIndex(val => val.branch == obj.branch)
-                    console.log(index)
                     console.log(obj)
                     newStateArray[index] = obj 
                     this.setState({ items: newStateArray, text: '', allprograms: [] })
