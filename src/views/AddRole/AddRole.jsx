@@ -71,7 +71,8 @@ class AddRole extends React.Component {
     render() {
         const { error, isLoaded, items } = this.state;
         return (
-            <div align="center">
+            <div align="left">
+                <Sidebar {...this.props} />
                 <Sidebar {...this.props} />
                 <div id="main-panel" className="main-panel" ref="mainPanel">
                 <Header {...this.props} />

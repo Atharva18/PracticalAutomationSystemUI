@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import { HashRouter, Route, Switch } from "react-router-dom";
-
+import Sidebar from "components/Sidebar/Sidebar";
+import Header from "components/Header/Header";
 import admindashboardRoutes from "routes/admindashboard.jsx";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
@@ -165,8 +166,12 @@ class Dashboard extends Component {
            </Row>
          </Grid>
        </div>*/
-      <div align="center">
-      
+      <div align="left">
+        <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
+          <Sidebar {...this.props} />
+         
+          </div>
+
       </div>
     );
   }
