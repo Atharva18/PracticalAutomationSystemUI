@@ -1,9 +1,10 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
+import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
-
+import PropTypes from 'prop-types';
 
 class AddProgram extends React.Component {
     constructor(props) {
@@ -89,9 +90,10 @@ class AddProgram extends React.Component {
     render() {
         const { error, isLoaded, items } = this.state;
         return (
-            <div align="center">
+            <div align="left">
+                <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Sidebar {...this.props} />
-                <div id="main-panel" className="main-panel" ref="mainPanel">
+                <Header {...this.props} />
                 <Col md={12}>
                     <Card
                         title="ADD PROGRAMS"
@@ -128,7 +130,7 @@ class AddProgram extends React.Component {
 
                 <br></br>
                 <form onSubmit={this.onSubmit}>
-                    <table>
+                    <table align="center">
                         <tr>
                             <td>Branch:</td>
                             <td>
@@ -146,13 +148,20 @@ class AddProgram extends React.Component {
                         </tr>
                     </table>
                     <br></br>
-                    <input type="submit" name="submit" value="Submit"></input>
+                    <div align="center">
+                        <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
+                    </div>
                 </form>
                 </div>
             </div>
         )
     }
 }
-export default AddProgram;
 
+AddProgram.PropTypes=
+{
+    text:PropTypes.string.isRequired,
+}
+
+export default AddProgram;
 
