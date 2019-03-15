@@ -7,7 +7,7 @@ import {
   FormControl,
   FormGroup,
   ControlLabel,
-  Alert,
+  
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
@@ -94,7 +94,7 @@ class Login extends React.Component {
     if (isAuthenticated && role == 'admin') {
       return (
         <div align='center'>
-        
+         
           <Route path='/dashboard' strict exact component={Dashboard} />
 
           <HashRouter>
@@ -154,6 +154,7 @@ class Login extends React.Component {
       return (
         <div align='center'>
           <Grid>
+            
             <Card style={{ width: '10rem' }}
               title="Login"
               content=
@@ -180,12 +181,6 @@ class Login extends React.Component {
       )
     }
   }
-}
-
-Login.PropTypes=
-{
-  username:PropTypes.string.isRequired,
-  password:PropTypes.string.isRequired
 }
 
 

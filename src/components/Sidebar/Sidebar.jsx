@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-
 import HeaderLinks from "../Header/HeaderLinks.jsx";
-
 import imagine from "assets/img/sidebar-3.jpg";
 //import logo from "assets/img/reactlogo.png";
 
@@ -29,12 +27,13 @@ class Sidebar extends Component {
   }
   render() {
     const sidebarBackground = {
-    //  backgroundImage: "url(" + imagine + ")"
+
     };
 
     let role =sessionStorage.getItem('type');
 
     if(role=='admin')
+    
     {
     return (
       <div
@@ -53,6 +52,7 @@ class Sidebar extends Component {
         <div className="sidebar-wrapper">
           <ul className="nav">
             {this.state.width <= 991 ? <HeaderLinks /> : null}
+            
     
             {admindashboardRoutes.map((prop, key) => {
               if (!prop.redirect)
@@ -81,6 +81,7 @@ class Sidebar extends Component {
         </div>
       </div>
     );}
+
     else if(role=='faculty')
     {
       return (

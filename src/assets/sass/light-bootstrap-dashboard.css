@@ -182,7 +182,7 @@ input:focus {
   text-align: center; }
 
 .margin-top {
-  margin-top:50px; }
+  margin-top: 50px; }
 
 .wrapper {
   position: relative;
@@ -2610,7 +2610,7 @@ body > .navbar-collapse[data-color="purple"]:after {
     left: auto;
     z-index: 1032;
     visibility: visible;
-    background-color: #999;
+    background-color: #000;
     overflow-y: visible;
     border-top: none;
     text-align: left;

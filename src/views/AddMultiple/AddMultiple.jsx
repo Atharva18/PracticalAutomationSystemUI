@@ -6,6 +6,7 @@ class AddMultiple extends React.Component {
         super(props);
         this.state = {
             error: null,
+       
             file: null,
             isLoaded: false,
             items: []

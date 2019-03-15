@@ -1,13 +1,11 @@
 import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
-
+import Header from "components/Header/Header";
 import { Grid, Row, Col, Table,Button } from "react-bootstrap"
 
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
-
-
 class AddRole extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +16,6 @@ class AddRole extends React.Component {
             isLoaded: false,
             items: [],
             text: ''
-
         }
     };
 
@@ -77,6 +74,7 @@ class AddRole extends React.Component {
             <div align="center">
                 <Sidebar {...this.props} />
                 <div id="main-panel" className="main-panel" ref="mainPanel">
+                <Header {...this.props} />
                 <Col md={12}>
                     <Card
                         title="ADD ROLE"
