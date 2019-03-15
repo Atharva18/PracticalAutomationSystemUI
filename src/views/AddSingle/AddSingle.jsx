@@ -7,32 +7,7 @@ import 'antd/dist/antd.css'
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 
-
-const residences = [{
-  value: 'zhejiang',
-  label: 'Zhejiang',
-  children: [{
-    value: 'hangzhou',
-    label: 'Hangzhou',
-    children: [{
-      value: 'xihu',
-      label: 'West Lake',
-    }],
-  }],
-}, {
-  value: 'jiangsu',
-  label: 'Jiangsu',
-  children: [{
-    value: 'nanjing',
-    label: 'Nanjing',
-    children: [{
-      value: 'zhonghuamen',
-      label: 'Zhong Hua Men',
-    }],
-  }],
-}];
 
 class RegistrationForm extends React.Component {
   state = {
@@ -51,8 +26,34 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(this.state.role);
-  
+    console.log('IN submit');
+    fetch('http://localhost:8023/user-create', {
+      method: 'POST',
+      body: JSON.stringify({
+        fname:this.state.firstname,
+        lname:this.state.lastname,
+        email:this.state.email,
+        username:this.state.username,
+        password:this.state.password,
+        roll_type:this.state.role.toLowerCase(),
+        status:'Active',
+        login_timestamp:'',
+        logout_timestamp:'',
+        login_attempts:''
+      }),
+      headers: { "Content-Type": "application/json" }
+  }).then(response => response.json())
+      .then(response => {
+          console.log(response.body);
+          if (response.result === 'Success') {
+
+             alert(response.result);
+          }
+          else
+          {
+            alert(response.result);
+          }
+      });
   }
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -130,7 +131,7 @@ class RegistrationForm extends React.Component {
               })(
                 <Input
                   onChange={this.handleChange}
-                  value={this.state.firstname}
+                  setFieldsValue={this.state.firstname}
                   name='firstname'
                 />
               )}
@@ -138,7 +139,7 @@ class RegistrationForm extends React.Component {
             <Form.Item
               label="Last Name"
             >
-              {getFieldDecorator('lname', {
+              {getFieldDecorator('lastname', {
                 rules: [{
                   type: 'text', message: 'The input is not valid'
                 }, {
@@ -147,7 +148,7 @@ class RegistrationForm extends React.Component {
               })(
                 <Input
                   onChange={this.handleChange}
-                  value={this.state.lastname}
+                  setFieldsValue={this.state.lastname}
                   name='lastname'
                 />
               )}
@@ -164,7 +165,7 @@ class RegistrationForm extends React.Component {
               })(
                 <Input
                   onChange={this.handleChange}
-                  value={this.state.email}
+                  setFieldsValue={this.state.email}
                   name='email'
                 />
               )}
@@ -182,7 +183,7 @@ class RegistrationForm extends React.Component {
               })(
                 <Input type="password" 
                 onChange={this.handleChange}
-                  value={this.state.password}
+                setFieldsValue={this.state.password}
                   name='password'/>
               )}
             </Form.Item>
@@ -199,7 +200,7 @@ class RegistrationForm extends React.Component {
               })(
                 <Input
                   onChange={this.handleChange}
-                  value={this.state.username}
+                  setFieldsValue={this.state.username}
                   name='username'
                 />
               )}

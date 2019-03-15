@@ -71,9 +71,9 @@ class Login extends React.Component {
           })
           
           sessionStorage.setItem('username', username);
-          sessionStorage.setItem('type', response.data[0].Type);
+          sessionStorage.setItem('type', response.data[0].roll_type);
           sessionStorage.setItem('isAuth', true);
-          console.log(response.data[0].Type);
+          console.log(response.data[0].roll_type);
           this.props.history.push("/dashboard");
         }
         else {
