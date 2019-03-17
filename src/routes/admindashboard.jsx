@@ -10,6 +10,7 @@ import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
 import AddSingle from "views/AddSingle/AddSingle"
+import Enrollment from "views/Enrollment/Enrollment"
 
 const admindashboardRoutes = [
  
@@ -42,6 +43,12 @@ const admindashboardRoutes = [
     name: "Add User",
     icon: "pe-7s-user",
     component: AddSingle
+  },
+  {  
+    path: "/Enrollment",
+    name: "Enroll Students",
+    icon: "pe-7s-user",
+    component: Enrollment
   },
   {
     path: "/table",

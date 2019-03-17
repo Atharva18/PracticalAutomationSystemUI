@@ -2,8 +2,8 @@ import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
-import { Grid, Row, Col, Table,Button } from "react-bootstrap"
-
+import { Grid, Row, Col, Table, Button } from "react-bootstrap"
+import { PageHeader } from 'antd';
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
 class AddRole extends React.Component {
@@ -17,6 +17,7 @@ class AddRole extends React.Component {
             items: [],
             text: ''
         }
+        
     };
 
     handleChange(e) {
@@ -46,7 +47,7 @@ class AddRole extends React.Component {
                 }
             });
     }
-    
+
     componentDidMount() {
 
         fetch("http://localhost:8023/findAll-role")
@@ -69,62 +70,83 @@ class AddRole extends React.Component {
             )
     }
     render() {
+        const routes = [
+            {
+                path: 'first',
+                breadcrumbName: 'Add Role',
+            },
+            {
+                path: 'Program',
+                breadcrumbName: 'View Role',
+            },
+            {
+                path: 'second',
+                breadcrumbName: 'Delete',
+            },
+            {
+                path: 'third',
+                breadcrumbName: 'Delet',
+            },
+        ];
         const { error, isLoaded, items } = this.state;
         return (
             <div align="left">
                 <Sidebar {...this.props} />
                 <Sidebar {...this.props} />
                 <div id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
-                <Col md={12}>
-                    <Card
-                        title="ADD ROLE"
-                        category="AVAILABLE ROLES"
-                        ctTableFullWidth
-                        ctTableResponsive
-                        content={
-                            <Table striped hover responsive='sm'>
-                                <thead>
-                                    <tr>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {items.map((item) => {
-                                        return (
-                                            <tr>
-                                                <td align='center'>{item.Type.toUpperCase()}</td>
-                                                <td align='center'>
-                                                    <h5>EDIT</h5>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </Table>
-                        }
+                    <PageHeader
+                       
+                        breadcrumb={{ routes }}
                     />
-                </Col>
+                    <Col md={12}>
+                        <Card
+                            title="ADD ROLE"
+                            category="AVAILABLE ROLES"
+                            ctTableFullWidth
+                            ctTableResponsive
+                            content={
+                                <Table striped hover responsive='sm'>
+                                    <thead>
+                                        <tr>
 
-                <br></br>
-                <form onSubmit={this.onSubmit}>
-                    <div align="center">
-                    <input type="text" required pattern='[A-Za-z]+' onChange={this.handleChange} value={this.state.text} ref="task"></input>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {items.map((item) => {
+                                            return (
+                                                <tr>
+                                                    <td align='center'>{item.Type.toUpperCase()}</td>
+                                                    <td align='center'>
+                                                        <h5>EDIT</h5>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </Table>
+                            }
+                        />
+                    </Col>
+
                     <br></br>
-                    <br></br>
-                    <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
-                    </div>
-                </form>
+                    <form onSubmit={this.onSubmit}>
+                        <div align="center">
+                            <input type="text" required pattern='[A-Za-z]+' onChange={this.handleChange} value={this.state.text} ref="task"></input>
+                            <br></br>
+                            <br></br>
+                            <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )
     }
 }
 
-AddRole.PropTypes=
-{
-  text:PropTypes.string.isRequired,
-}
+AddRole.PropTypes =
+    {
+        text: PropTypes.string.isRequired,
+    }
 
 
 export default AddRole;
