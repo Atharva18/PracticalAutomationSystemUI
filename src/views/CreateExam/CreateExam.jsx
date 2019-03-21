@@ -39,10 +39,8 @@ export class CreateExam extends Component {
     };
 
     handleSubmit1 (){
-        <div>
-        <Route path='/views/Enrollment/Enrollment' strict exact Component={Enrollment}></Route>
-        <Link to='/' Component={Enrollment}></Link>
-        </div> 
+        
+       this.props.history.push('/Enrollment');
         {/* <HashRouter>
             
             <Switch>
@@ -66,8 +64,7 @@ export class CreateExam extends Component {
                 year: this.state.year,
             }),
             headers: { "Content-Type": "application/json" }
-        }).then(response => response.json())
-            .then(response => {
+        }).then(response => {
                 console.log(response.body);
                 if (response.result === 'Success') {
                     this.setState({
