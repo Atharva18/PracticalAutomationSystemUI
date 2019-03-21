@@ -14,6 +14,7 @@ import Enrollment from "views/Enrollment/Enrollment"
 import AddSubject from "views/AddSubject/AddSubject"
 import AddBranch from "views/AddBranch/AddBranch"
 import AddDepartment from "views/AddDepartment/AddDepartment"
+import CreateExam from "views/CreateExam/CreateExam"
 
 const admindashboardRoutes = [
  
@@ -61,7 +62,7 @@ const admindashboardRoutes = [
   },
   {  
     path: "/AddBranch",
-    name: "Add Subject",
+    name: "Add Branch",
     icon: "pe-7s-user",
     component: AddBranch
   },
@@ -70,6 +71,12 @@ const admindashboardRoutes = [
     name: "Add Department",
     icon: "pe-7s-user",
     component: AddDepartment
+  },
+  {  
+    path: "/CreateExam",
+    name: "Create Exam",
+    icon: "pe-7s-note2",
+    component: CreateExam
   },
   {
     path: "/table",
