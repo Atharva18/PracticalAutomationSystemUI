@@ -41,21 +41,38 @@ function toggleCheckbox(index) {
   });
 }
 
-function enrollstudents()
+function enrollstudents(e)
 {
+  e.preventDefault();
+        var self = this;
+        fetch('http://localhost:8023/user-enrol', {
+            method: 'POST',
+            body: JSON.stringify({
+                user:this.state.checkboxes
+            }),
+            headers: { "Content-Type": "application/json" }
+        }).then(response => response.json())
+            .then(response => {
+                console.log(response.body);
+                if (response.result === 'Success') {
+
+                    alert('SUCCESS');
+                }
+                else
+                {
+                  alert(response.result);
+                }
+            });
   
 
 
-  
 
 
 }
 
 function renderCheckboxes() {
   const { checkboxes } = this.state;
-
   return (
-
     <div>
       <Col md={12}>
         <Card
@@ -65,7 +82,6 @@ function renderCheckboxes() {
           ctTableResponsive
           content={
             <Table align='center' striped hover responsive>
-
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Select</th>
@@ -116,7 +132,7 @@ class Enrollment extends React.Component {
 
     this.state = {
       checkboxes: [],
-      filter: 'ALL',
+     
       items: []
     };
   }

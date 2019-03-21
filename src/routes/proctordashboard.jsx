@@ -6,7 +6,7 @@ import Typography from "views/Typography/Typography";
 //import Maps from "views/Maps/Maps";
 import Notifications from "views/Notifications/Notifications";
 //import Upgrade from "views/Upgrade/Upgrade";
-
+import AddSingle from "views/AddSingle/AddSingle"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 
 
@@ -24,10 +24,10 @@ const proctordashboardRoutes = [
     component: AddMultiple
   },
   {  
-    path: "/user",
-    name: "Add User Profile",
+    path: "/AddSingle",
+    name: "Add User",
     icon: "pe-7s-user",
-    component: UserProfile
+    component: AddSingle
   },
   {
     path: "/table",
