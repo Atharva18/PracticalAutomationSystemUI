@@ -11,6 +11,9 @@ import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
 import AddSingle from "views/AddSingle/AddSingle"
 import Enrollment from "views/Enrollment/Enrollment"
+import AddSubject from "views/AddSubject/AddSubject"
+import AddBranch from "views/AddBranch/AddBranch"
+import AddDepartment from "views/AddDepartment/AddDepartment"
 
 const admindashboardRoutes = [
  
@@ -49,6 +52,24 @@ const admindashboardRoutes = [
     name: "Enroll Students",
     icon: "pe-7s-user",
     component: Enrollment
+  },
+  {  
+    path: "/AddSubject",
+    name: "Add Subject",
+    icon: "pe-7s-user",
+    component: AddSubject
+  },
+  {  
+    path: "/AddBranch",
+    name: "Add Subject",
+    icon: "pe-7s-user",
+    component: AddBranch
+  },
+  {  
+    path: "/AddDepartment",
+    name: "Add Department",
+    icon: "pe-7s-user",
+    component: AddDepartment
   },
   {
     path: "/table",
