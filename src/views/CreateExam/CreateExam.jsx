@@ -40,7 +40,7 @@ export class CreateExam extends Component {
 
     handleSubmit1 (){
         
-       this.props.history.push('/Enrollment');
+       this.history.push('/Enrollment');
         {/* <HashRouter>
             
             <Switch>
@@ -64,8 +64,9 @@ export class CreateExam extends Component {
                 year: this.state.year,
             }),
             headers: { "Content-Type": "application/json" }
-        }).then(response => {
-                console.log(response.body);
+        }).then(response => response.json())
+        .then(response => {
+                console.log(response.result);
                 if (response.result === 'Success') {
                     this.setState({
                         isLoaded: true,
@@ -108,7 +109,7 @@ export class CreateExam extends Component {
                                         <Option value="IT">IT</Option>
                                         <Option value="ENTC">ENTC</Option>
                                     </Select><br /><br />
-                                    Semester:<Select labelInValue defaultValue={{ key: 'Semester' }} onChange={this.handleChangeSelect1} style={{ width: 120 }} name="sem">
+                                    Semester:<Select labelInValue defaultValue={{ key: 'Semester' }} onChange={this.handleChangeSelect} style={{ width: 120 }} name="sem">
                                         <Option value="1">1</Option>
                                         <Option value="2">2</Option>
                                         <Option value="3">3</Option>
@@ -118,7 +119,7 @@ export class CreateExam extends Component {
                                         <Option value="7">7</Option>
                                         <Option value="8">8</Option>
                                     </Select><br /><br />
-                                    Year:<Select style={{ width: 120 }} labelInValue defaultValue={{ key: 'Year' }} onChange={this.handleChangeSelect} name="year">
+                                    Year:<Select style={{ width: 120 }} labelInValue defaultValue={{ key: 'Year' }} onChange={this.handleChangeSelect1} name="year">
                                         <Option value="SE">SE</Option>
                                         <Option value="TE">TE</Option>
                                         <Option value="BE">BE</Option>
