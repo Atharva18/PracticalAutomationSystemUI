@@ -43,12 +43,20 @@ function toggleCheckbox(index) {
 
 function enrollstudents(e)
 {
-  e.preventDefault();
+
+  var branch = localStorage.getItem('branch');
+  var year = localStorage.getItem('year');
+  localStorage.clear();
+  console.log('in enroll'+ branch);
+  //alert(branch);
+ /* e.preventDefault();
         var self = this;
         fetch('http://localhost:8023/user-enrol', {
             method: 'POST',
             body: JSON.stringify({
-                user:this.state.checkboxes
+                user:this.state.checkboxes,
+                branch:branch,
+                year:year
             }),
             headers: { "Content-Type": "application/json" }
         }).then(response => response.json())
@@ -63,7 +71,7 @@ function enrollstudents(e)
                   alert(response.result);
                 }
             });
-  
+  */
 
 
 
@@ -138,7 +146,13 @@ class Enrollment extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8023/findAll")
+
+  var branch = localStorage.getItem('branch');
+  var year = localStorage.getItem('year');
+  localStorage.clear();
+  console.log('in enroll'+ branch);
+
+    fetch(`http://localhost:8023/find-users/${branch}/${year}`)
       .then(res => res.json())
       .then(
         (result) => {

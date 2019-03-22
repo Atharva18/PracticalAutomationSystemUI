@@ -14,43 +14,40 @@ import {
     Link
 } from 'react-router-dom';
 import Enrollment from "views/Enrollment/Enrollment";
+import { createHashHistory } from 'history'
 
 // const { Link } = Anchor;
 const Option = Select.Option;
-
+export const history = createHashHistory()
 export class CreateExam extends Component {
     constructor(props) {
         super(props);
-        // this.onSubmit = this.handleSubmit.bind(this);
+         this.handleSubmit1 = this.handleSubmit1.bind(this);
         // this.handleChange = this.handleChange.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
             items: [],
-            text: ''
-        }
-    };
-
-    state = {
-        branch: '',
+            text: '',
+            branch: '',
         sem: '',
         year: '',
         key: 'tab1'
+            
+        }
     };
 
-    handleSubmit1 (){
-        
-       this.history.push('/Enrollment');
-        {/* <HashRouter>
-            
-            <Switch>
-                <Route path='/' Component={Enrollment}/>
-            </Switch>
-            
-        </HashRouter>
-        </div> */}
+   
 
+    handleSubmit1 (e){
+        e.preventDefault();
+        alert('hi ')
+        localStorage.setItem('branch',this.state.branch);
+        localStorage.setItem('year',this.state.year);
 
+        history.push({
+            pathname: '/Enrollment',
+          })
     }
 
     handleSubmit = (e) => {
