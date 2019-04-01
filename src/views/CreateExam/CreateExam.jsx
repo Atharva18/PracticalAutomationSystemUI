@@ -64,7 +64,8 @@ export class CreateExam extends Component {
         }).then(response => response.json())
         .then(response => {
                 console.log(response.result);
-                if (response.result === 'Success') {
+                if (response.result === 'Success') 
+                {
                     this.setState({
                         isLoaded: true,
                         items: response.data

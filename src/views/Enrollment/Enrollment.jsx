@@ -9,6 +9,10 @@ function addCheckbox() {
 
   console.log(this.state.items);
   const checkbox = [];
+
+  var temp= this.state.items;
+
+  if(this.state.items.length>0)
   this.state.items.map((item, key) => {
 
     const fname = item.fname;
@@ -28,9 +32,10 @@ function addCheckbox() {
       checkboxes: checkbox
     }
   )
+  }
   // console.log(this.state.checkboxes);
 
-}
+
 
 function toggleCheckbox(index) {
   const { checkboxes } = this.state;
@@ -140,7 +145,6 @@ class Enrollment extends React.Component {
 
     this.state = {
       checkboxes: [],
-     
       items: []
     };
   }
@@ -178,7 +182,7 @@ class Enrollment extends React.Component {
     return (
       <div align="left">
         <Sidebar {...this.props} />
-        <Sidebar {...this.props} />
+        <Sidebar {...this.props} /> 
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <Header {...this.props} />
 
