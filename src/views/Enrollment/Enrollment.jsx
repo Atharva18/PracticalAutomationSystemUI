@@ -5,13 +5,11 @@ import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
 
-function addCheckbox() {
+function addCheckbox() 
+{
 
   console.log(this.state.items);
   const checkbox = [];
-
-  var temp= this.state.items;
-
   if(this.state.items.length>0)
   this.state.items.map((item, key) => {
 
@@ -19,7 +17,7 @@ function addCheckbox() {
     const lname = item.lname;
     const email = item.email;
     checkbox.push({
-      checked: true,
+      checked: false,
       fname,
       lname,
       email
@@ -39,10 +37,49 @@ function addCheckbox() {
 
 function toggleCheckbox(index) {
   const { checkboxes } = this.state;
- // checkboxes[index].checked = !checkboxes[index].checked;
- checkboxes.splice(index,1);
+  var count= this.state.size;
+  if(checkboxes[index].checked==true)
+  {
+    checkboxes[index].checked=false;
+    count--;
+
+  }
+  else
+  {
+    checkboxes[index].checked=true;
+    count++;
+  }
+ //checkboxes.splice(index,1);
   this.setState({
-    checkboxes
+    checkboxes:checkboxes,
+    size:count
+  });
+}
+
+function addbatch(e)
+{
+  this.setState({
+    size:this.refs.size.value
+
+  })
+  var size= this.refs.size.value;
+  var checkbox = this.state.checkboxes;
+  
+  checkbox.map((item, index) => 
+  {
+    if(index<size)
+    {
+      checkbox[index].checked=true;
+    }
+    else
+    {
+      checkbox[index].checked= false;
+    }
+  }
+  )
+
+  this.setState({
+    checkboxes:checkbox
   });
 }
 
@@ -51,8 +88,29 @@ function enrollstudents(e)
 
   var branch = localStorage.getItem('branch');
   var year = localStorage.getItem('year');
-  localStorage.clear();
-  console.log('in enroll'+ branch);
+  //localStorage.clear();
+
+
+  if(this.state.size == 0 || this.state.name=="")
+  {
+    alert('Please enter batch size and name');
+  }
+  else
+  {
+    var checkedboxes=[];
+    var checkboxes=this.state.checkboxes;
+    checkboxes.map((item, index) =>
+    {
+
+      if(checkboxes[index].checked==true)
+      {
+
+        checkedboxes.push(checkboxes[index])
+      }
+    })
+
+    console.log(checkedboxes);
+
   //alert(branch);
  /* e.preventDefault();
         var self = this;
@@ -79,7 +137,7 @@ function enrollstudents(e)
   */
 
 
-
+          }
 
 }
 
@@ -139,13 +197,22 @@ function updateFilter(filter) {
   });
 }
 
+function batchname()
+{
+  this.setState({
+    name:this.refs.name.value
+  })
+}
+
 class Enrollment extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       checkboxes: [],
-      items: []
+      items: [],
+      size:0,
+      name:""
     };
   }
 
@@ -153,7 +220,7 @@ class Enrollment extends React.Component {
 
   var branch = localStorage.getItem('branch');
   var year = localStorage.getItem('year');
-  localStorage.clear();
+ // localStorage.clear();
   console.log('in enroll'+ branch);
 
     fetch(`http://localhost:8023/find-users/${branch}/${year}`)
@@ -189,9 +256,17 @@ class Enrollment extends React.Component {
           {renderCheckboxes.call(this)}
           <div align='center'>
             <br></br>
+            
+              Enter Batch Size :
+              <input type='number' min ='0' value= {this.state.size} onChange={addbatch.bind(this)}ref='size'/>
+              Enter Batch Name :
+              <input type='text' value= {this.state.batchtext} onChange={batchname.bind(this)} ref='name'/>
+              <br></br>
+              <br></br>
             <button onClick={enrollstudents.bind(this)}>
               Add students
-                 </button>
+            </button>
+           
           </div>
         </div>
       </div>
