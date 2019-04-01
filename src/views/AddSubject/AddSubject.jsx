@@ -138,12 +138,6 @@ export class AddSubject extends Component {
                                     Semester:<Select labelInValue defaultValue={{ key: 'Semester' }} onChange={this.handleChangeSelect1} style={{ width: 120 }} name="sem">
                                         <Option value="1">1</Option>
                                         <Option value="2">2</Option>
-                                        <Option value="3">3</Option>
-                                        <Option value="4">4</Option>
-                                        <Option value="5">5</Option>
-                                        <Option value="6">6</Option>
-                                        <Option value="7">7</Option>
-                                        <Option value="8">8</Option>
                                     </Select><br /><br />
                                     Year:<Select style={{ width: 120 }} labelInValue defaultValue={{ key: 'Year' }} onChange={this.handleChangeSelect} name="year">
                                         <Option value="SE">SE</Option>
