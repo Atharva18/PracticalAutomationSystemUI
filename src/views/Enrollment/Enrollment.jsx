@@ -122,6 +122,7 @@ function enrollstudents(e)
       }
     )
 
+    console.log(checkedboxes);
     
 
   //alert(branch);

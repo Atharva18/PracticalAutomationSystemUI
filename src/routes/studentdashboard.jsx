@@ -9,6 +9,7 @@ import Notifications from "views/Notifications/Notifications";
 import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
+import ViewStatement from "../views/ViewStatement/ViewStatement";
 
 const studentdashboardRoutes = [
  
@@ -20,6 +21,12 @@ const studentdashboardRoutes = [
     name: "Notifications",
     icon: "pe-7s-bell",
     component: Notifications
+  },
+  {
+    path: "/viewStatement",
+    name: "Problem Statement",
+    icon: "pe-7s-diskette",
+    component: ViewStatement
   },
  /* {
     upgrade: true,
