@@ -1,12 +1,40 @@
 import React from 'react';
 import Sidebar from "components/Sidebar/Sidebar";
+import Header from "components/Header/Header";
+import { Grid, Row, Col, Table, Button } from "react-bootstrap"
+
+function addstudents()
+{
+   
+    if(this.state.items.length>0)
+    { alert('Called!');}
+
+    fetch('http://localhost:8023/addfrom-csv', {
+            method: 'POST',
+            body: JSON.stringify({
+               
+            }),
+            headers: { "Content-Type": "application/json" }
+        }).then(response => response.json())
+            .then(response => {
+                console.log(response.body);
+                if (response.result === 'Success')
+                {
+
+                   
+                }
+            });
+
+
+
+}
+
 
 class AddMultiple extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
-       
             file: null,
             isLoaded: false,
             items: []
@@ -61,7 +89,9 @@ class AddMultiple extends React.Component {
         return (
             <div align="center">
              <Sidebar {...this.props} />
-                <h2>Add multiple students:</h2>
+             <div align='center'id="main-panel" className="main-panel" ref="mainPanel">
+             <Header {...this.props} />
+               
                 <div>
                     <form onSubmit={this.onFormSubmit}>
                         <label>Select a file:</label>
@@ -70,9 +100,19 @@ class AddMultiple extends React.Component {
                     </form>
                 </div>
                 <div>
-                    <table>
-                        <tr>
-                        </tr>
+                    <Table striped hover responsive='sm'>
+                    <thead class="thead-dark">
+                    <tr>
+                 
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Roll Type</th>
+                 
+                     </tr>
+                 </thead>
+                        <tbody>
                         {
                             items.map(item => (
                                 <tr>
@@ -86,12 +126,23 @@ class AddMultiple extends React.Component {
                                         {item.email}
                                     </td>
                                     <td>
-                                        <h5>Edit</h5>
+                                        {item.username}
                                     </td>
+                                    <td>
+                                        {item.roll_type}
+                                    </td>
+                                    
                                 </tr>
                             ))}
+                           
+                        </tbody> 
 
-                    </table>
+                    </Table>
+
+                            <div align='center'>
+                            <Button onClick={addstudents.bind(this)}align='center'>SUBMIT</Button>
+                            </div>
+                  </div>
                 </div>
             </div>
         );
