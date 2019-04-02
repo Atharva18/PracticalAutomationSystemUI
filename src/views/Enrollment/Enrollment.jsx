@@ -4,6 +4,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
+import Preview from 'react-data-preview'
 
 function addCheckbox() 
 {
@@ -60,7 +61,6 @@ function addbatch(e)
 {
   this.setState({
     size:this.refs.size.value
-
   })
   var size= this.refs.size.value;
   var checkbox = this.state.checkboxes;
@@ -98,18 +98,31 @@ function enrollstudents(e)
   else
   {
     var checkedboxes=[];
+    var uncheckedboxes=[];
     var checkboxes=this.state.checkboxes;
     checkboxes.map((item, index) =>
     {
 
       if(checkboxes[index].checked==true)
       {
-
         checkedboxes.push(checkboxes[index])
+        
+      }
+      else
+      {
+        uncheckedboxes.push(checkboxes[index]);
       }
     })
 
-    console.log(checkedboxes);
+    this.setState(
+      {
+       checkboxes:uncheckedboxes,
+       size:0,
+       name:""
+      }
+    )
+
+    
 
   //alert(branch);
  /* e.preventDefault();
@@ -260,7 +273,7 @@ class Enrollment extends React.Component {
               Enter Batch Size :
               <input type='number' min ='0' value= {this.state.size} onChange={addbatch.bind(this)}ref='size'/>
               Enter Batch Name :
-              <input type='text' value= {this.state.batchtext} onChange={batchname.bind(this)} ref='name'/>
+              <input type='text' value= {this.state.name} onChange={batchname.bind(this)} ref='name'/>
               <br></br>
               <br></br>
             <button onClick={enrollstudents.bind(this)}>
