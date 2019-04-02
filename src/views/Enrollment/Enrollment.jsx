@@ -4,7 +4,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
-import Preview from 'react-data-preview'
+
 
 function addCheckbox() 
 {

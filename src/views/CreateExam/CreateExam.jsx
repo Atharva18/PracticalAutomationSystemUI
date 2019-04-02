@@ -46,7 +46,7 @@ export class CreateExam extends Component {
         localStorage.setItem('year',this.state.year);
 
         history.push({
-            pathname: '/Enrollment',
+            pathname: '/ConfirmExam',
           })
     }
 
