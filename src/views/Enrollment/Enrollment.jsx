@@ -16,11 +16,14 @@ function addCheckbox()
     const fname = item.fname;
     const lname = item.lname;
     const email = item.email;
+    const id= item._id;
+    console.log(id);
     checkbox.push({
       checked: false,
       fname,
       lname,
-      email
+      email,
+      id
     });
   }
   );
@@ -133,7 +136,7 @@ function enrollstudents(e)
          {
             method: 'POST',
             body: JSON.stringify({
-                user:this.state.checkboxes,
+                user:checkedboxes,
                 branch:branch,
                 year:year,
                 subject:subject,
@@ -200,14 +203,14 @@ function renderCheckboxes() {
                 )}
               </tbody>
             </Table>
-          } 
+          }     
         />
       </Col>
 
     </div>
   );
 
-}
+}   
 
 function updateFilter(filter) {
   this.setState({
