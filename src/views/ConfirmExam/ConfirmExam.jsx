@@ -31,6 +31,10 @@ export class ConfirmExam extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        console.log(this.state.subject)
+        console.log(this.state.examName)
+        //console.log()
         console.log(m);
         typeof m;
         fetch('http://localhost:8023/exam-create', {

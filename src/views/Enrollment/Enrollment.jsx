@@ -8,7 +8,6 @@ import Card from "components/Card/Card.jsx";
 
 function addCheckbox() 
 {
-
   console.log(this.state.items);
   const checkbox = [];
   if(this.state.items.length>0)
@@ -88,8 +87,10 @@ function enrollstudents(e)
 
   var branch = localStorage.getItem('branch');
   var year = localStorage.getItem('year');
+  var subject = localStorage.getItem('subject')
   //localStorage.clear();
 
+  console.log(subject);
 
   if(this.state.size == 0 || this.state.name=="")
   {
@@ -126,18 +127,24 @@ function enrollstudents(e)
     
 
   //alert(branch);
- /* e.preventDefault();
+  e.preventDefault();
         var self = this;
-        fetch('http://localhost:8023/user-enrol', {
+        fetch('http://localhost:8023/user-enrol',
+         {
             method: 'POST',
             body: JSON.stringify({
                 user:this.state.checkboxes,
                 branch:branch,
-                year:year
+                year:year,
+                subject:subject,
+                name:this.state.name,
+                size:this.state.size
             }),
             headers: { "Content-Type": "application/json" }
-        }).then(response => response.json())
-            .then(response => {
+             })
+             .then(response => response.json())
+             .then(response =>
+               {
                 console.log(response.body);
                 if (response.result === 'Success') {
 
@@ -148,9 +155,6 @@ function enrollstudents(e)
                   alert(response.result);
                 }
             });
-  */
-
-
           }
 
 }
