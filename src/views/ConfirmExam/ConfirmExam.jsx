@@ -33,9 +33,6 @@ export class ConfirmExam extends Component {
         e.preventDefault();
         console.log(m);
         typeof m;
-        alert(m);
-        alert(this.state.examName);
-        alert(this.state.subject);
         fetch('http://localhost:8023/exam-create', {
             method: 'POST',
             body: JSON.stringify({

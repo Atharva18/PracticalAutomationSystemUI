@@ -16,6 +16,7 @@ import {
 import Enrollment from "views/Enrollment/Enrollment";
 import { createHashHistory } from 'history'
 
+var map1=new Map();
 // const { Link } = Anchor;
 const Option = Select.Option;
 export const history = createHashHistory()
@@ -41,10 +42,12 @@ export class CreateExam extends Component {
 
     handleSubmit1 (e){
         e.preventDefault();
-        alert('hi ')
+        var key=parseInt(e.target.id,10);
+        console.log(map1.get(key));
+        var element=map1.get(key);
         localStorage.setItem('branch',this.state.branch);
         localStorage.setItem('year',this.state.year);
-
+        localStorage.setItem('subject',element);
         history.push({
             pathname: '/ConfirmExam',
           })
@@ -122,12 +125,13 @@ export class CreateExam extends Component {
                                     </form>
                                     <div>
                         
-                                {items.map((item) => {
+                                {items.map((item,index) => {
                                     return (
                                         <tr>
                                             <td align='center'>{item.course.toUpperCase()}</td>
                                             <td align='center'>
-                                           <Button type="submit" onClick={this.handleSubmit1}>Create Exam</Button>
+                                            {map1.set(index,item.course)}
+                                           <Button type="submit" onClick={this.handleSubmit1} id={index}>Create Exam</Button>
                                            
                                              {/* <Anchor>
     <Link href="#views-AddRole-AddRole" title="Create Exam" />
