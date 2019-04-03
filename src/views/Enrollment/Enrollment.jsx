@@ -133,7 +133,7 @@ function enrollstudents(e)
          {
             method: 'POST',
             body: JSON.stringify({
-                user:this.state.checkboxes,
+                user:checkedboxes,
                 branch:branch,
                 year:year,
                 subject:subject,

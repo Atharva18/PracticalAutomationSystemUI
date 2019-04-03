@@ -16,6 +16,8 @@ import AddBranch from "views/AddBranch/AddBranch"
 import AddDepartment from "views/AddDepartment/AddDepartment"
 import CreateExam from "views/CreateExam/CreateExam"
 import ConfirmExam from "../views/ConfirmExam/ConfirmExam";
+import AvailableExams from "../views/AvailableExams/AvailableExams";
+import AddProblemStatement from "../views/AddProblemStatement/AddProblemStatement";
 
 const admindashboardRoutes = [
  
@@ -84,6 +86,18 @@ const admindashboardRoutes = [
     name: "Confirm Exam",
     icon: "pe-7s-note2",
     component: ConfirmExam
+  },
+  {  
+    path: "/AvailableExams",
+    name: "Available Exams",
+    icon: "pe-7s-news-paper",
+    component: AvailableExams
+  },
+  {  
+    path: "/AddProblemStatement",
+    name: "Add Statements",
+    icon: "pe-7s-news-paper",
+    component: AddProblemStatement
   },
   {
     path: "/table",
