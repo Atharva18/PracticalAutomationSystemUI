@@ -109,6 +109,8 @@ class AddMultiple extends React.Component {
                   <th scope="col">Email</th>
                   <th scope="col">Username</th>
                   <th scope="col">Roll Type</th>
+                  <th scope="col">Branch</th>
+                  <th scope="col">Year</th>
                  
                      </tr>
                  </thead>
@@ -131,7 +133,12 @@ class AddMultiple extends React.Component {
                                     <td>
                                         {item.roll_type}
                                     </td>
-                                    
+                                    <td>
+                                        {item.branch}
+                                    </td>
+                                    <td>
+                                        {item.year}
+                                    </td>
                                 </tr>
                             ))}
                            

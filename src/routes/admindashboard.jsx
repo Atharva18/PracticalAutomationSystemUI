@@ -18,6 +18,7 @@ import CreateExam from "views/CreateExam/CreateExam"
 import ConfirmExam from "../views/ConfirmExam/ConfirmExam";
 import AvailableExams from "../views/AvailableExams/AvailableExams";
 import AddProblemStatement from "../views/AddProblemStatement/AddProblemStatement";
+import ViewStudents from "../views/ViewStudents/ViewStudents";
 
 const admindashboardRoutes = [
  
@@ -110,6 +111,12 @@ const admindashboardRoutes = [
     name: "Typography",
     icon: "pe-7s-news-paper",
     component: Typography
+  },
+  {
+    path: "/ViewStudents",
+    name: "View Students",
+    icon: "pe-7s-news-paper",
+    component: ViewStudents
   },
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },*/
