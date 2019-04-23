@@ -95,7 +95,7 @@ class AddMultiple extends React.Component {
                 <div>
                     <form onSubmit={this.onFormSubmit}>
                         <label>Select a file:</label>
-                        <input type="file" accept=".csv" onChange={this.onChange} />
+                        <input type="file" onChange={this.onChange} />
                         <button type="submit">Upload</button>
                     </form>
                 </div>
