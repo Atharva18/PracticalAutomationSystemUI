@@ -9,7 +9,9 @@ import Notifications from "views/Notifications/Notifications";
 import AddRole from "views/AddRole/AddRole"
 import AddMultiple from "views/AddMultiple/AddMultiple";
 import AddProgram from "views/AddProgram/AddProgram"
-import ViewStatement from "../views/ViewStatement/ViewStatement";
+import ViewExamSubjects from "../views/ViewExamSubjects/ViewExamSubjects";
+import ViewStatements from "../views/ViewStatements/ViewStatements";
+import Malpractices from "../views/Malpractices/Malpractices";
 
 const studentdashboardRoutes = [
  
@@ -23,10 +25,22 @@ const studentdashboardRoutes = [
     component: Notifications
   },
   {
-    path: "/viewStatement",
+    path: "/viewexamsubjects",
     name: "Problem Statement",
     icon: "pe-7s-diskette",
-    component: ViewStatement
+    component: ViewExamSubjects
+  },
+  {
+    path: "/viewStatement",
+    name: "View Statement",
+    icon: "pe-7s-diskette",
+    component: ViewStatements
+  },
+  {
+    path: "/malpractices",
+    name: "Malpractices",
+    icon: "pe-7s-diskette",
+    component: Malpractices
   },
  /* {
     upgrade: true,
