@@ -133,10 +133,6 @@ export class CreateExam extends Component {
                                             {map1.set(index,item.course)}
                                            <Button type="submit" onClick={this.handleSubmit1} id={index}>Create Exam</Button>
                                            
-                                             {/* <Anchor>
-    <Link href="#views-AddRole-AddRole" title="Create Exam" />
-                                            </Anchor> 
-                                            <Link to="/views/Enrollment/Enrollment"> Create Exam</Link> */}
                                             </td>
                                         </tr>
                                     );
