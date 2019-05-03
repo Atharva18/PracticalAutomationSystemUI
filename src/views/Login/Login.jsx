@@ -64,16 +64,18 @@ class Login extends React.Component {
       headers: { "Content-Type": "application/json" }
     }).then(response => response.json())
       .then(response => {
-        console.log(response.result);
+        console.log(response);
         if (response.result === 'Success') {
           this.setState({
             isAuthenticated: true
           })
           
           sessionStorage.setItem('username', username);
+          sessionStorage.setItem('id', response.data[0].id);
           sessionStorage.setItem('type', response.data[0].Type);
           sessionStorage.setItem('isAuth', true);
           console.log(response.data[0].Type);
+          console.log(response.data[0].id);
           this.props.history.push("/dashboard");
         }
         else {
