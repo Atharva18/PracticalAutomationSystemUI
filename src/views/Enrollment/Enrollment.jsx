@@ -17,12 +17,14 @@ function addCheckbox()
     const lname = item.lname;
     const email = item.email;
     const id= item._id;
+    const batchname=""
    // console.log(id);
     checkbox.push({
       checked: false,
       fname,
       lname,
       email,
+      batchname,
       id
     });
   }
@@ -94,6 +96,7 @@ function enrollstudents(e)
   //localStorage.clear();
 
   console.log(subject);
+  var name=this.state.name
 
   if(this.state.size == 0 || this.state.name=="")
   {
@@ -109,6 +112,7 @@ function enrollstudents(e)
 
       if(checkboxes[index].checked==true)
       {
+        checkboxes[index].batchname = name
         checkedboxes.push(checkboxes[index])
         
       }
