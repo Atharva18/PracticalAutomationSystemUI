@@ -61,18 +61,27 @@ class Malpractices extends React.Component {
     {
       return(
         <div>
+          <div align="left">
+        <Sidebar {...this.props} />
+        <Sidebar {...this.props} />
+        <div id="main-panel" className="main-panel" ref="mainPanel">
           True
+          </div>
+          </div>
         </div>
       )
     }
     else
     {
-      return(
-        <div>
-
-          false
+      <div>
+          <div align="left">
+        <Sidebar {...this.props} />
+        <Sidebar {...this.props} />
+        <div id="main-panel" className="main-panel" ref="mainPanel">
+          False
           </div>
-      )
+          </div>
+        </div>
     }
 
 
