@@ -42,7 +42,7 @@ const admindashboardRoutes = [
   },
   {
     path: "/Upload",
-    name: "Add multiple users",
+    name: "Export users",
     icon: "pe-7s-cloud-upload",
     component: AddMultiple
   },

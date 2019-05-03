@@ -3,27 +3,26 @@ import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 
-function addstudents()
-{
-   
-    if(this.state.items.length>0)
-    { alert('Called!');}
+function addstudents() {
+
+    if (this.state.items.length > 0) { alert('Called!'); }
 
     fetch('http://localhost:8023/addfrom-csv', {
-            method: 'POST',
-            body: JSON.stringify({
-               
-            }),
-            headers: { "Content-Type": "application/json" }
-        }).then(response => response.json())
-            .then(response => {
-                console.log(response.body);
-                if (response.result === 'Success')
-                {
+        method: 'POST',
+        body: JSON.stringify({
 
-                   
-                }
-            });
+        }),
+        headers: { "Content-Type": "application/json" }
+    }).then(response => response.json())
+        .then(response => {
+            console.log(response.body);
+            if (response.result === 'Success') {
+                alert('Exported successfully!');
+            }
+            else if (response.result === 'Failure') {
+                alert(response.result);
+            }
+        });
 
 
 
@@ -87,69 +86,68 @@ class AddMultiple extends React.Component {
     render() {
         const { error, isLoaded, items } = this.state;
         return (
-            <div align="center">
-             <Sidebar {...this.props} />
-             <div align='center'id="main-panel" className="main-panel" ref="mainPanel">
-             <Header {...this.props} />
-               
-                <div>
-                    <form onSubmit={this.onFormSubmit}>
-                        <label>Select a file:</label>
-                        <input type="file" onChange={this.onChange} />
-                        <button type="submit">Upload</button>
-                    </form>
-                </div>
-                <div>
-                    <Table striped hover responsive='sm'>
-                    <thead class="thead-dark">
-                    <tr>
-                 
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Username</th>
-                  <th scope="col">Roll Type</th>
-                  <th scope="col">Branch</th>
-                  <th scope="col">Year</th>
-                 
-                     </tr>
-                 </thead>
-                        <tbody>
-                        {
-                            items.map(item => (
+            <div align="left">
+                <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
+                    <Sidebar {...this.props} />
+                    <Header {...this.props} />
+                    <div align='center'>
+                        <form onSubmit={this.onFormSubmit}>
+                            <label>Select a file:</label>
+                            <input type="file" accept=".csv" onChange={this.onChange} />
+                            <button type="submit">Upload</button>
+                        </form>
+                    </div>
+                    <div>
+                        <Table striped hover responsive='sm'>
+                            <thead class="thead-dark">
                                 <tr>
-                                    <td>
-                                        {item.fname}
-                                    </td>
-                                    <td>
-                                        {item.lname}
-                                    </td>
-                                    <td>
-                                        {item.email}
-                                    </td>
-                                    <td>
-                                        {item.username}
-                                    </td>
-                                    <td>
-                                        {item.roll_type}
-                                    </td>
-                                    <td>
-                                        {item.branch}
-                                    </td>
-                                    <td>
-                                        {item.year}
-                                    </td>
+
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Roll Type</th>
+                                    <th scope="col">Branch</th>
+                                    <th scope="col">Year</th>
+
                                 </tr>
-                            ))}
-                           
-                        </tbody> 
+                            </thead>
+                            <tbody>
+                                {
+                                    items.map(item => (
+                                        <tr>
+                                            <td>
+                                                {item.fname}
+                                            </td>
+                                            <td>
+                                                {item.lname}
+                                            </td>
+                                            <td>
+                                                {item.email}
+                                            </td>
+                                            <td>
+                                                {item.username}
+                                            </td>
+                                            <td>
+                                                {item.roll_type}
+                                            </td>
+                                            <td>
+                                                {item.branch}
+                                            </td>
+                                            <td>
+                                                {item.year}
+                                            </td>
+                                        </tr>
+                                    ))}
 
-                    </Table>
+                            </tbody>
 
-                            <div align='center'>
-                            <Button onClick={addstudents.bind(this)}align='center'>SUBMIT</Button>
-                            </div>
-                  </div>
+                        </Table>
+
+                        <div align='center'>
+                            <Button onClick={addstudents.bind(this)} align='center'>SUBMIT</Button>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
