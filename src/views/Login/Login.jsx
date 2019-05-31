@@ -7,9 +7,9 @@ import {
   FormControl,
   FormGroup,
   ControlLabel,
-  
-} from "react-bootstrap";
 
+} from "react-bootstrap";
+import Background from '../../assets/img/pcce.png';
 import { Card } from "components/Card/Card.jsx";
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
@@ -69,7 +69,7 @@ class Login extends React.Component {
           this.setState({
             isAuthenticated: true
           })
-          
+
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('id', response.data[0].id);
           sessionStorage.setItem('type', response.data[0].Type);
@@ -91,13 +91,17 @@ class Login extends React.Component {
   render() {
     const isAuthenticated = sessionStorage.getItem('isAuth');
     let role = sessionStorage.getItem('type');
+    const divStyle = {
+      height: '100%',
+      backgroundImage: `url(${Background})`,
+      backgroundSize: 'cover'
+    };
 
-     
 
     if (isAuthenticated && role == 'admin') {
       return (
         <div align='center'>
-         
+
           <Route path='/dashboard' strict exact component={Dashboard} />
 
           <HashRouter>
@@ -155,9 +159,8 @@ class Login extends React.Component {
     }
     else {
       return (
-        <div align='center'>
-          <Grid>
-            
+        <div align='center' style={divStyle}>
+          <Grid style={{ paddingTop: "50px", width: "40%", height: "60%" }}>
             <Card style={{ width: '10rem' }}
               title="Login"
               content=
@@ -170,7 +173,7 @@ class Login extends React.Component {
                     <br></br>
                     <br></br>
                     <ControlLabel style={{ color: 'black' }}>Password</ControlLabel>
-                    <br></br> 
+                    <br></br>
                     <input type="password" required onChange={this.handleChange2} value={this.state.password} ref="task2"></input>
                     <br></br>
                     <br></br>
