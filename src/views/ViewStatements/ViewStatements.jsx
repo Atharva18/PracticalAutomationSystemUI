@@ -160,27 +160,19 @@ class ViewStatements extends React.Component {
 
         console.log(username)
 
-        reqwest({
-            url: 'http://localhost:8023/upload-code',
-            method: 'post',
-            processData: false,
-            data: formData,
-            batchname: batchname,
-            username: username,
-            success: () => {
-                this.setState({
-                    fileList: [],
-                    uploading: false,
-                });
-                message.success('upload successfully.');
-            },
-            error: () => {
-                this.setState({
-                    uploading: false,
-                });
-                message.error('upload failed.');
-            },
-        });
+        fetch('http://localhost:8023/upload-code', {
+            method: 'POST',
+            body: JSON.stringify({
+              data:formData,
+              username:username,
+              batchname:batchname
+            }),
+            headers: { "Content-Type": "application/json" }
+        }).then(response => response.json())
+            .then(response => {
+                console.log(response.body);
+               
+            });
 
     }
 
