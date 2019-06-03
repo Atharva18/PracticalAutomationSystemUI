@@ -66,7 +66,8 @@ class HeaderLinks extends Component {
 
               confirm({
                 title: 'Are you sure you want to logout?',
-                
+                okText:'Yes',
+                cancelText:'No', 
                 onOk() {
                   return new Promise((resolve, reject) => {
                     //setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
