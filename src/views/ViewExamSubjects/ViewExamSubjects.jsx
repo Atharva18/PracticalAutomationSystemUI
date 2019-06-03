@@ -13,6 +13,7 @@ import { Alert ,message,Card,Modal} from 'antd';
 import { createHashHistory } from 'history'
 
 var map = new Map()
+var map1= new Map()
 
 export const history = createHashHistory()
 const confirm = Modal.confirm;
@@ -50,7 +51,11 @@ class ViewExamSubjects extends React.Component {
     var key = parseInt(e.target.id, 10);
     //  console.log(map.get(key));
     var subject = map.get(key);
+    var batchname = map1.get(key);
+
+    localStorage.setItem('batchname',batchname)
     //console.log(element);
+    console.log(subject)
 
     // console.log(sessionStorage.getItem('subject'));
 
@@ -145,6 +150,7 @@ class ViewExamSubjects extends React.Component {
           {this.state.subjects.map((item, index) => {
              
             map.set(index, item.subject)
+            map1.set(index,item.name)
             return (
              
               <table>

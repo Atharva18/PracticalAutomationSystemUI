@@ -2,9 +2,10 @@ import React from 'react';
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import {
-    Form, Input, Select, Button, Row, Card, message, Modal
+    Form, Input, Select, Button, Row, Card, message, Modal, Icon, Upload
 } from 'antd';
 import "antd/dist/antd.css";
+import reqwest from 'reqwest';
 
 import { Table } from "react-bootstrap"
 
@@ -134,26 +135,67 @@ class ViewStatements extends React.Component {
             statement: "",
             allocated: false,
             changes: 0,
-            request: false
+            request: false,
+            fileList: [],
+            uploading: false
 
         }
 
     };
 
-    
+
+    handleUpload = () => {
+        const { fileList } = this.state;
+        const formData = new FormData();
+        fileList.forEach((file) => {
+            formData.append('files[]', file);
+        });
+
+        this.setState({
+            uploading: true,
+        });
+
+        var batchname=localStorage.getItem('batchname')
+        var username= sessionStorage.getItem('username')
+
+        console.log(username)
+
+        reqwest({
+            url: 'http://localhost:8023/upload-code',
+            method: 'post',
+            processData: false,
+            data: formData,
+            batchname:batchname,
+            username:username,
+            success: () => {
+              this.setState({
+                fileList: [],
+                uploading: false,
+              });
+              message.success('upload successfully.');
+            },
+            error: () => {
+              this.setState({
+                uploading: false,
+              });
+              message.error('upload failed.');
+            },
+          });
+
+    }
 
     handleSubmit(e) {
         console.log('handlesubmit')
         confirm({
             title: 'Are you sure you want to change the statement?',
-            okText:'Yes',
-            cancelText:'No',
+            okText: 'Yes',
+            cancelText: 'No',
             content: 'This action cannot be reversed',
-            onOk:()=> {
-             {requestchange.call(this)}
+            onOk: () => {
+                { requestchange.call(this) }
             },
-            onCancel:()=> {},
-          });
+            onCancel: () => { },
+        });
     }
 
     componentDidMount() {
@@ -229,6 +271,31 @@ class ViewStatements extends React.Component {
 
     render() {
 
+        const { uploading } = this.state;
+        const props = {
+            action: '//jsonplaceholder.typicode.com/posts/',
+            onRemove: (file) => {
+                this.setState(({ fileList }) => {
+                    const index = fileList.indexOf(file);
+                    const newFileList = fileList.slice();
+                    newFileList.splice(index, 1);
+                    return {
+                        fileList: newFileList,
+                    };
+                });
+            },
+            beforeUpload: (file) => {
+                this.setState(({ fileList }) => ({
+                    fileList: [...fileList, file],
+                }));
+                return false;
+            },
+            fileList: this.state.fileList,
+        };
+
+
+
+
         /*  var ts= new Date().getTime()/1000
           console.log(ts)
     
@@ -271,7 +338,21 @@ class ViewStatements extends React.Component {
 
                             <tr>
                                 <td align='right'>
-                                    <Button type="primary"> Upload Code </Button>
+                                    <Upload {...props}>
+                                        <Button>
+                                            <Icon type="upload" /> Select File
+                                         </Button>
+                                    </Upload>
+                                    <br></br>
+                                    <Button
+                                        className="upload-demo-start"
+                                        type="primary"
+                                        onClick={this.handleUpload}
+                                        disabled={this.state.fileList.length === 0}
+                                        loading={uploading}
+                                    >
+                                        {uploading ? 'Uploading' : 'Start Upload'}
+                                    </Button>
                                 </td>
 
                                 <td>

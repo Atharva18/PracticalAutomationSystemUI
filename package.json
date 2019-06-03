@@ -18,7 +18,8 @@
     "react-google-maps": "9.4.5",
     "react-notification-system": "0.2.17",
     "react-router-dom": "4.2.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "reqwest": "^2.0.5"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
