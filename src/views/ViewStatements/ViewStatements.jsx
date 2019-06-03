@@ -155,8 +155,8 @@ class ViewStatements extends React.Component {
             uploading: true,
         });
 
-        var batchname=localStorage.getItem('batchname')
-        var username= sessionStorage.getItem('username')
+        var batchname = localStorage.getItem('batchname')
+        var username = sessionStorage.getItem('username')
 
         console.log(username)
 
@@ -165,22 +165,22 @@ class ViewStatements extends React.Component {
             method: 'post',
             processData: false,
             data: formData,
-            batchname:batchname,
-            username:username,
+            batchname: batchname,
+            username: username,
             success: () => {
-              this.setState({
-                fileList: [],
-                uploading: false,
-              });
-              message.success('upload successfully.');
+                this.setState({
+                    fileList: [],
+                    uploading: false,
+                });
+                message.success('upload successfully.');
             },
             error: () => {
-              this.setState({
-                uploading: false,
-              });
-              message.error('upload failed.');
+                this.setState({
+                    uploading: false,
+                });
+                message.error('upload failed.');
             },
-          });
+        });
 
     }
 
@@ -325,6 +325,8 @@ class ViewStatements extends React.Component {
                 <Sidebar {...this.props} />
                 <div id="main-panel" className="main-panel" ref="mainPanel">
                     <Header {...this.props} />
+
+
                     <br></br>
                     <h3>Allocated Statement is :</h3>
                     <h3> {this.state.statement} </h3>
@@ -337,7 +339,13 @@ class ViewStatements extends React.Component {
                         <tbody>
 
                             <tr>
-                                <td align='right'>
+                                <td align='center'>
+
+                                    <br></br>
+                                    <Button type="primary" onClick={this.handleSubmit}> Request Change 
+                                    </Button>
+                                    <br></br>
+                                    <br></br>
                                     <Upload {...props}>
                                         <Button>
                                             <Icon type="upload" /> Select File
@@ -356,7 +364,7 @@ class ViewStatements extends React.Component {
                                 </td>
 
                                 <td>
-                                    <Button type="primary" onClick={this.handleSubmit}> Request Change? </Button>
+
                                 </td>
                             </tr>
                         </tbody>
