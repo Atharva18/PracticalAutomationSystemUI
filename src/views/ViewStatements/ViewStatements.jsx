@@ -56,15 +56,14 @@ function generatestatement() {
             }).then(response => response.json())
                 .then(response => {
                     // console.log(response.result);
-                    if (response.result === 'Success') {
-
+                    if (response.result === 'Success') 
+                    {
                         this.setState(
                             {
                                 statement: statement,
                                 allocated: true
                             }
                         )
-
                         console.log('Allocated')
                     }
                 });
@@ -158,8 +157,8 @@ class ViewStatements extends React.Component {
         var batchname = localStorage.getItem('batchname')
         var username = sessionStorage.getItem('username')
 
-        console.log(username)
-
+        console.log(username+""+batchname)
+        console.log(fileList)
         fetch('http://localhost:8023/upload-code', {
             method: 'POST',
             body: JSON.stringify({
@@ -167,9 +166,10 @@ class ViewStatements extends React.Component {
               username:username,
               batchname:batchname
             }),
-            headers: { "Content-Type": "application/json" }
-        }).then(response => response.json())
-            .then(response => {
+             })
+            .then(response =>
+            {
+                
                 console.log(response.body);
                
             });
