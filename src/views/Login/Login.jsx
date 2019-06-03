@@ -18,6 +18,10 @@ import facultydashboardRoutes from 'routes/facultydashboard.jsx'
 import proctordashboardRoutes from 'routes/proctordashboard.jsx'
 import studentdashboardRoutes from 'routes/studentdashboard.jsx'
 import PropTypes from 'prop-types';
+import {
+  Modal,message
+} from 'antd';
+import "antd/dist/antd.css";
 
 
 class Login extends React.Component {
@@ -69,7 +73,7 @@ class Login extends React.Component {
           this.setState({
             isAuthenticated: true
           })
-
+          message.success('Logged in successfully!')
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('id', response.data[0].id);
           sessionStorage.setItem('type', response.data[0].Type);
@@ -79,6 +83,7 @@ class Login extends React.Component {
           this.props.history.push("/dashboard");
         }
         else {
+          message.error('Incorrect username or password!')
           this.setState({
             username: '',
             password: '',
@@ -99,6 +104,9 @@ class Login extends React.Component {
 
 
     if (isAuthenticated && role == 'admin') {
+
+     // message.success('Success!')
+
       return (
         <div align='center'>
 
@@ -115,6 +123,7 @@ class Login extends React.Component {
       )
     }
     else if (isAuthenticated && role == 'faculty') {
+      //message.success('Success!')
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
@@ -129,6 +138,7 @@ class Login extends React.Component {
       )
     }
     else if (isAuthenticated && role == 'proctor') {
+      //message.success('Success!')
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
@@ -143,6 +153,7 @@ class Login extends React.Component {
       )
     }
     else if (isAuthenticated && role == 'user') {
+      //message.success('Success!')
       return (
         <div align='center'>
           <Route path='/dashboard' strict exact component={Dashboard} />
@@ -161,11 +172,11 @@ class Login extends React.Component {
       return (
         <div align='center' style={divStyle}>
           <Grid style={{ paddingTop: "50px", width: "40%", height: "60%" }}>
-            <Card style={{ width: '10rem' }}
-              title="Login"
+            <Card style={{ width: '20rem' }}
+              title="LOGIN"
               content=
               {
-                <Form>
+                <Form >
                   <form onSubmit={this.onSubmit}>
                     <ControlLabel style={{ color: 'black' }}>Username</ControlLabel>
                     <br></br>
