@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Header from "components/Header/Header";
+import "antd/dist/antd.css";
 import Sidebar from "components/Sidebar/Sidebar";
 import Card from "components/Card/Card.jsx";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
@@ -6,37 +8,29 @@ import { Anchor } from 'antd';
 import { createHashHistory } from 'history'
 
 var map1=new Map();
-
-const { Link } = Anchor;
 export const history = createHashHistory()
-export class AvailableExams extends Component {
+
+export class ViewBatchStudents extends Component {
 
     constructor(props) {
         super(props);
-        // this.onSubmit = this.handleSubmit.bind(this);
-        // this.handleChange1 = this.handleChange1.bind(this);
-        // this.handleChange2 = this.handleChange2.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
             items: [],
+            batch_name:localStorage.getItem('Batch_Name')
         }
     };
 
-    handleSubmit1 (e){
-        e.preventDefault();
-        var key=parseInt(e.target.id,10);
-        console.log(map1.get(key));
-        var element=map1.get(key);
-        alert(element);
-        localStorage.setItem('Exam_Name',element);
-        history.push({
-            pathname: '/ViewBatches',
-          })
-    }
-
     componentDidMount() {
-        fetch("http://localhost:8023/findAll-exam")
+        fetch("http://localhost:8023/find-batch_students/:name/:subject",{
+            method: 'POST',
+            body: JSON.stringify({
+                batch_name: this.state.batch_name,
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
+        
             .then(res => res.json())
             .then(
                 (result) => {
@@ -64,39 +58,27 @@ export class AvailableExams extends Component {
                 <div id="main-panel" className="main-panel" ref="mainPanel">
                 <Col md={12}>
                     <Card
-                        title="AVAILABLE Exams"
-                        category="AVAILABLE Exams"
+                        title="AVAILABLE Students"
+                        category="AVAILABLE Students"
                         ctTableFullWidth
                         ctTableResponsive
                         content={
                             <Table align='center' striped hover responsive>
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">Subject</th>
-                                        <th scope="col">Exam_Name</th>
-                                    
-                                        <th scope="col">Start_Date</th>
-                                        <th scope="col">End_Date</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Student_Name</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     {items.map((item,index) => (
                                         <tr>
-                                            {/* <Anchor>
-                                            <Link href="#views-AddMultiple-AddMultiple.jsx" title={item.course}/></Anchor> */}
-                                            <td>{item.course}</td>
-                                            <td>{item.exam_name}</td>
-                                            
-                                            <td>{item.start_date}</td>
-                                            <td>{item.end_date}</td>
-                                            <td>{item.status}</td>
-                                            <td align='center'>
-                                            {map1.set(index,item.exam_name)}
-                                           <Button type="submit" onClick={this.handleSubmit1} id={index}>View Exam</Button>
+                                            <td>{item.user}</td>
+                                             <td align='center'>
+                                            {map1.set(index,item.user)}
+                                           <Button type="submit" onClick={this.handleSubmit1} id={index}>View Details</Button>
                                            
-                                            </td>
+                                            </td> 
                                         </tr>
                                     ))}
                                 </tbody>
@@ -105,9 +87,10 @@ export class AvailableExams extends Component {
                     />
                 </Col>
             </div>
+                
             </div>
         )
     }
 }
 
-export default AvailableExams
+export default ViewBatchStudents
