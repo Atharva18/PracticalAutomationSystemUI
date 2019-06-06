@@ -56,8 +56,7 @@ function generatestatement() {
             }).then(response => response.json())
                 .then(response => {
                     // console.log(response.result);
-                    if (response.result === 'Success') 
-                    {
+                    if (response.result === 'Success') {
                         this.setState(
                             {
                                 statement: statement,
@@ -156,22 +155,15 @@ class ViewStatements extends React.Component {
 
         var batchname = localStorage.getItem('batchname')
         var username = sessionStorage.getItem('username')
-
-        console.log(username+""+batchname)
-        console.log(fileList)
-        fetch('http://localhost:8023/upload-code', {
+        console.log(username + "" + batchname)
+        fetch(`http://localhost:8023/upload-code/${batchname}/${username}`, {
             method: 'POST',
-            body: JSON.stringify({
-              data:formData,
-              username:username,
-              batchname:batchname
-            }),
-             })
-            .then(response =>
-            {
-                
+            body: formData
+        })
+            .then(response => {
+
                 console.log(response.body);
-               
+
             });
 
     }
@@ -334,7 +326,7 @@ class ViewStatements extends React.Component {
                                 <td align='center'>
 
                                     <br></br>
-                                    <Button type="primary" onClick={this.handleSubmit}> Request Change 
+                                    <Button type="primary" onClick={this.handleSubmit}> Request Change
                                     </Button>
                                     <br></br>
                                     <br></br>
