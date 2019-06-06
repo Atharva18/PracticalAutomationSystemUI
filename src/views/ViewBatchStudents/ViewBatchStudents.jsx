@@ -23,7 +23,7 @@ export class ViewBatchStudents extends Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:8023/find-batch_students/:name/:subject",{
+        fetch('http://localhost:8023/find-batch_students/:name/:subject',{
             method: 'POST',
             body: JSON.stringify({
                 batch_name: this.state.batch_name,
