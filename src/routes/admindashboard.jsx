@@ -19,6 +19,9 @@ import ConfirmExam from "../views/ConfirmExam/ConfirmExam";
 import AvailableExams from "../views/AvailableExams/AvailableExams";
 import AddProblemStatement from "../views/AddProblemStatement/AddProblemStatement";
 import ViewStudents from "../views/ViewStudents/ViewStudents";
+import ViewBatches from "../views/ViewBatches/ViewBatches";
+import ViewBatchStudents from "../views/ViewBatchStudents/ViewBatchStudents";
+import StudentDetails from "../views/StudentDetails/StudentDetails";
 
 const admindashboardRoutes = [
  
@@ -117,6 +120,24 @@ const admindashboardRoutes = [
     name: "View Students",
     icon: "pe-7s-news-paper",
     component: ViewStudents
+  },
+  {
+    path: "/ViewBatches",
+    name: "View Batches",
+    icon: "pe-7s-news-paper",
+    component: ViewBatches
+  },
+  {
+    path: "/ViewBatcheStudents",
+    name: "View Batch Students",
+    icon: "pe-7s-news-paper",
+    component: ViewBatchStudents
+  },
+  {
+    path: "/StudentDetails",
+    name: "Student Details",
+    icon: "pe-7s-note2",
+    component: StudentDetails
   },
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },*/
