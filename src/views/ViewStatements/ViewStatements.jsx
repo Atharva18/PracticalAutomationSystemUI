@@ -155,7 +155,6 @@ class ViewStatements extends React.Component {
 
         var batchname = localStorage.getItem('batchname')
         var username = sessionStorage.getItem('username')
-<<<<<<< HEAD
         console.log(username + "" + batchname)
         fetch(`http://localhost:8023/upload-code/${batchname}/${username}`, {
             method: 'POST',
@@ -166,8 +165,6 @@ class ViewStatements extends React.Component {
                 console.log(response.body);
 
             });
-
-=======
 
         console.log(username+""+batchname)
         console.log(fileList)
@@ -192,7 +189,6 @@ class ViewStatements extends React.Component {
               message.error('upload failed.');
             },
           });
->>>>>>> ffc0a86a9bb841ec038f1224b3118f434be1a66c
     }
 
     handleSubmit(e) {
