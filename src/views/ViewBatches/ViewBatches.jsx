@@ -34,7 +34,7 @@ export class ViewBatches extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8023/find-batch/:exam_name',{
+        fetch('http://localhost:8023/find-batch',{
             method: 'POST',
             body: JSON.stringify({
                 exam_name: this.state.subject,
