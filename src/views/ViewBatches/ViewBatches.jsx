@@ -8,6 +8,7 @@ import { Anchor } from 'antd';
 import { createHashHistory } from 'history'
 
 var map1=new Map();
+var map2=new Map();
 export const history = createHashHistory()
 
 export class ViewBatches extends Component {
@@ -26,8 +27,10 @@ export class ViewBatches extends Component {
         var key=parseInt(e.target.id,10);
         console.log(map1.get(key));
         var element=map1.get(key);
+        var element1=map2.get(key);
         alert(element);
         localStorage.setItem('Batch_Name',element);
+        localStorage.setItem('SubjectForBacth',element1);
         history.push({
            pathname: '/ViewBatchStudents',
           })
@@ -88,7 +91,7 @@ export class ViewBatches extends Component {
                                             <td>{item.subject}</td>
                                             <td>{item.name}</td>
                                              <td align='center'>
-                                            {map1.set(index,item.name)}
+                                            {map1.set(index,item.name)}{map2.set(index,item.subject)}
                                            <Button type="submit" onClick={this.handleSubmit1} id={index}>View Students</Button>
                                            
                                             </td> 

@@ -18,15 +18,17 @@ export class ViewBatchStudents extends Component {
             error: null,
             isLoaded: false,
             items: [],
-            batch_name:localStorage.getItem('Batch_Name')
+            batch_name:localStorage.getItem('Batch_Name'),
+            subject:localStorage.getItem('jectForBacth')
         }
     };
 
     componentDidMount() {
-        fetch('http://localhost:8023/find-batch_students/:name/:subject',{
+        fetch('http://localhost:8023/find-batch_students',{
             method: 'POST',
             body: JSON.stringify({
                 batch_name: this.state.batch_name,
+                subject:this.state.subject
             }),
             headers: { "Content-Type": "application/json" }
         })
