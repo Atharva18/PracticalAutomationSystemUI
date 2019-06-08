@@ -28,6 +28,7 @@ export class ViewBatches extends Component {
         console.log(map1.get(key));
         var element=map1.get(key);
         var element1=map2.get(key);
+        alert(element1);
         alert(element);
         localStorage.setItem('Batch_Name',element);
         localStorage.setItem('SubjectForBacth',element1);
