@@ -64,6 +64,7 @@ export class ViewBatchStudents extends Component {
             <div>
                 <Sidebar {...this.props} />
                 <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
+                <Header {...this.props} />
                 <Col md={12}>
                     <Card
                         title="AVAILABLE Students"
