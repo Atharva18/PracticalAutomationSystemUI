@@ -18,16 +18,11 @@ const studentdashboardRoutes = [
   
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },*/
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "pe-7s-bell",
-    component: Notifications
-  },
+  
   {
     path: "/viewexamsubjects",
     name: "Problem Statement",
-    icon: "pe-7s-diskette",
+    icon: "pe-7s-help1",
     component: ViewExamSubjects
   },
   {
@@ -36,13 +31,13 @@ const studentdashboardRoutes = [
     icon: "pe-7s-diskette",
     component: ViewStatements
   },
-  {
+ /* {
     path: "/malpractices",
     name: "Malpractices",
     icon: "pe-7s-diskette",
     component: Malpractices
   },
- /* {
+  {
     upgrade: true,
     path: "/upgrade",
     name: "Upgrade to PRO", 

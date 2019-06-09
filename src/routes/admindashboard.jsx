@@ -34,7 +34,7 @@ const admindashboardRoutes = [
   {
     path: "/Role",
     name: "Add Role",
-    icon: "pe-7s-users",
+    icon: "pe-7s-id",
     component: AddRole
   },
   {
@@ -52,31 +52,31 @@ const admindashboardRoutes = [
   {  
     path: "/AddSingle",
     name: "Add User",
-    icon: "pe-7s-user",
+    icon: "pe-7s-add-user",
     component: AddSingle
   },
   {  
     path: "/Enrollment",
     name: "Enroll Students",
-    icon: "pe-7s-user",
+    icon: "pe-7s-users",
     component: Enrollment
   },
   {  
     path: "/AddSubject",
     name: "Add Subject",
-    icon: "pe-7s-user",
+    icon: "pe-7s-study",
     component: AddSubject
   },
   {  
     path: "/AddBranch",
     name: "Add Branch",
-    icon: "pe-7s-user",
+    icon: "pe-7s-culture",
     component: AddBranch
   },
   {  
     path: "/AddDepartment",
     name: "Add Department",
-    icon: "pe-7s-user",
+    icon: "pe-7s-network",
     component: AddDepartment
   },
   {  
@@ -88,22 +88,22 @@ const admindashboardRoutes = [
   {  
     path: "/ConfirmExam",
     name: "Confirm Exam",
-    icon: "pe-7s-note2",
+    icon: "pe-7s-like2",
     component: ConfirmExam
   },
   {  
     path: "/AvailableExams",
     name: "Available Exams",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-display2",
     component: AvailableExams
   },
   {  
     path: "/AddProblemStatement",
     name: "Add Statements",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-plus",
     component: AddProblemStatement
   },
-  {
+ /* {
     path: "/table",
     name: "Table List",
     icon: "pe-7s-note2",
@@ -114,17 +114,17 @@ const admindashboardRoutes = [
     name: "Typography",
     icon: "pe-7s-news-paper",
     component: Typography
-  },
+  },*/
   {
     path: "/ViewStudents",
     name: "View Students",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-users",
     component: ViewStudents
   },
   {
     path: "/ViewBatches",
     name: "View Batches",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-folder",
     component: ViewBatches
   },
   {
@@ -136,11 +136,11 @@ const admindashboardRoutes = [
   {
     path: "/StudentDetails",
     name: "Student Details",
-    icon: "pe-7s-note2",
+    icon: "pe-7s-display1",
     component: StudentDetails
   },
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
-  { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },*/
+  { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },
   {
     path: "/notifications",
     name: "Notifications",
