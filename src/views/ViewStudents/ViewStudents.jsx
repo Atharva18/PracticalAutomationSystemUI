@@ -164,8 +164,8 @@ class ViewStudents extends React.Component {
     return (
       <div align="left">
         <Sidebar {...this.props} />
-        <Sidebar {...this.props} />
-        <div id="main-panel" className="main-panel" ref="mainPanel">
+       
+        <div align='left'id="main-panel" className="main-panel" ref="mainPanel">
           <Header {...this.props} />
 
           <Select defaultValue="Branch" style={{ width: 200 }} onChange={handleChange1.bind(this)} >

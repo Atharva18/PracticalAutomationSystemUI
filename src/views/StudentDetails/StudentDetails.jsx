@@ -13,7 +13,7 @@ export const history = createHashHistory()
 export class StudentDetails extends Component {
     render() {
         return (
-            <div>
+            <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Sidebar {...this.props} />
                 <h1>Ethe thoda problem ahe</h1>
 

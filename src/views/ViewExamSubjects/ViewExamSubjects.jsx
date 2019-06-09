@@ -141,8 +141,8 @@ class ViewExamSubjects extends React.Component {
     return (
       <div align="left">
         <Sidebar {...this.props} />
-        <Sidebar {...this.props} />
-        <div align='center' id="main-panel" className="main-panel" ref="mainPanel">
+      
+        <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
           <Header {...this.props} />
       
           <h3>Available Exams</h3>

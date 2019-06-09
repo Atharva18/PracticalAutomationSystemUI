@@ -64,6 +64,7 @@ export class ConfirmExam extends Component {
 
     render() {
         return (
+            <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
             <div style={{ padding: '30px', width: '50%', margin: '30px', height: '50%' }}>
                 <Sidebar {...this.props} />
                 <Row gutter={16}>
@@ -81,6 +82,7 @@ export class ConfirmExam extends Component {
                         </Card>
                     </Col>
                 </Row>
+            </div>
             </div>
         )
     }

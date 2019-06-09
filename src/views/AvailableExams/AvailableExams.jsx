@@ -61,7 +61,7 @@ export class AvailableExams extends Component {
         return (
             <div>
                 <Sidebar {...this.props} />
-                <div id="main-panel" className="main-panel" ref="mainPanel">
+                <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Col md={12}>
                     <Card
                         title="AVAILABLE Exams"

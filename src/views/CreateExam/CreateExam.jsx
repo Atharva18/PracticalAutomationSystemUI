@@ -98,7 +98,7 @@ export class CreateExam extends Component {
     render() {
         const { error, isLoaded, items } = this.state;
         return (
-            <div>
+            <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Sidebar {...this.props} />
                 <Row>
                     <Col span={12} offset={6} >

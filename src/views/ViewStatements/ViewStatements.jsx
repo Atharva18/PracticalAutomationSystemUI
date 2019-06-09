@@ -314,8 +314,8 @@ class ViewStatements extends React.Component {
             return (
                 <div align="center">
                     <Sidebar {...this.props} />
-                    <Sidebar {...this.props} />
-                    <div id="main-panel" className="main-panel" ref="mainPanel">
+                   
+                    <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                         <Header {...this.props} />
                         <div>
                             <h3> No statement allocated</h3>

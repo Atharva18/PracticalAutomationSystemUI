@@ -119,7 +119,7 @@ export class AddSubject extends Component {
     render() {
         const { error, isLoaded, items } = this.state;
         return (
-
+            <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
             <div style={{ padding: '30px', width: '50%', margin: '30px', height: '50%' }}>
                 <Row gutter={16}>
                     <Col span={15}>
@@ -178,6 +178,7 @@ export class AddSubject extends Component {
                         </Table></div></Card>
                     </Col>
                 </Row>
+            </div>
             </div>
         )
     }

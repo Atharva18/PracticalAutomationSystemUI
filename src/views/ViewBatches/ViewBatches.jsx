@@ -38,15 +38,15 @@ export class ViewBatches extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8023/find-batch',{
+        console.log('Here')
+        fetch('http://localhost:8023/find-batch',
+        {
             method: 'POST',
             body: JSON.stringify({
-                exam_name: this.state.subject,
+                exam_name:localStorage.getItem('Exam_Name')
             }),
             headers: { "Content-Type": "application/json" }
-        })
-        
-            .then(res => res.json())
+        }).then(res => res.json())
             .then(
                 (result) => {
                     console.log(result);
@@ -54,6 +54,7 @@ export class ViewBatches extends Component {
                         isLoaded: true,
                         items: result.data
                     });
+                    console.log(this.state.items)
                 },
                 (error) => {
                     console.log("In Error");
@@ -70,7 +71,7 @@ export class ViewBatches extends Component {
         return (
             <div>
                 <Sidebar {...this.props} />
-                <div id="main-panel" className="main-panel" ref="mainPanel">
+                <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Col md={12}>
                     <Card
                         title="AVAILABLE Batches"
@@ -87,6 +88,7 @@ export class ViewBatches extends Component {
                                 </thead>
 
                                 <tbody>
+                            
                                     {items.map((item,index) => (
                                         <tr>
                                             <td>{item.subject}</td>

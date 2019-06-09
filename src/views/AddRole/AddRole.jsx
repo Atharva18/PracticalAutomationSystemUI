@@ -70,34 +70,12 @@ class AddRole extends React.Component {
             )
     }
     render() {
-        const routes = [
-            {
-                path: 'first',
-                breadcrumbName: 'Add Role',
-            },
-            {
-                path: 'Program',
-                breadcrumbName: 'View Role',
-            },
-            {
-                path: 'second',
-                breadcrumbName: 'Delete',
-            },
-            {
-                path: 'third',
-                breadcrumbName: 'Delet',
-            },
-        ];
-        const { error, isLoaded, items } = this.state;
+       
         return (
             <div align="left">
-                <Sidebar {...this.props} />
-                <Sidebar {...this.props} />
-                <div id="main-panel" className="main-panel" ref="mainPanel">
-                    <PageHeader
-                       
-                        breadcrumb={{ routes }}
-                    />
+                <Sidebar {...this.props} /> 
+                <div align='left'id="main-panel" className="main-panel" ref="mainPanel">
+                
                     <Col md={12}>
                         <Card
                             title="ADD ROLE"
@@ -112,7 +90,8 @@ class AddRole extends React.Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {items.map((item) => {
+                                        {console.log(this.state.items)}
+                                        {this.state.items.map((item) => {
                                             return (
                                                 <tr>
                                                     <td align='center'>{item.Type.toUpperCase()}</td>

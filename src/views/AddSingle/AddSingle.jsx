@@ -115,7 +115,7 @@ class RegistrationForm extends React.Component {
       <div align='left'>
         <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
           <Sidebar {...this.props} />
-          <Sidebar {...this.props} />
+         
           <Header {...this.props} />
           <br></br>
 
