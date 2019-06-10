@@ -61,7 +61,7 @@ class AddProblemStatement extends React.Component {
 
                             <form onSubmit={this.onSubmit}>
                             <div align="center">
-                            Subject:<input type="text" required pattern='[A-Za-z]+' value={subject}   ></input>
+                            Subject:<input type="text"  value={subject}   ></input>
                             <br></br>
                             <br></br>
                             Statement:<input type="text" onChange={this.handleChange} ></input>

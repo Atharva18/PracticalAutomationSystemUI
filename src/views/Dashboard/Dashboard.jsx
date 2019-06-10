@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Sidebar from "components/Sidebar/Sidebar";
+import Background from '../../assets/img/pcce.png';
 import Header from "components/Header/Header";
 import admindashboardRoutes from "routes/admindashboard.jsx";
 import ChartistGraph from "react-chartist";
@@ -35,8 +36,9 @@ class Dashboard extends Component {
    return legend;
    }*/
   render() {
+    
     return (
-
+      
 
 
 

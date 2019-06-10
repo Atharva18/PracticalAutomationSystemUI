@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import HeaderLinks from "../Header/HeaderLinks.jsx";
 import imagine from "assets/img/sidebar-3.jpg";
 //import logo from "assets/img/reactlogo.png";
-
 import admindashboardRoutes from "routes/admindashboard.jsx";
 import facultydashboardRoutes from "routes/facultydashboard.jsx";
 import proctordashboardRoutes from "routes/proctordashboard.jsx";
@@ -27,7 +26,7 @@ class Sidebar extends Component {
   }
   render() {
     const sidebarBackground = {
-
+      
     };
 
     let role =sessionStorage.getItem('type');

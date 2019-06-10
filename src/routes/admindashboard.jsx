@@ -22,6 +22,7 @@ import ViewStudents from "../views/ViewStudents/ViewStudents";
 import ViewBatches from "../views/ViewBatches/ViewBatches";
 import ViewBatchStudents from "../views/ViewBatchStudents/ViewBatchStudents";
 import StudentDetails from "../views/StudentDetails/StudentDetails";
+import DownloadCodes from "../views/DownloadCodes/DownloadCodes";
 
 const admindashboardRoutes = [
  
@@ -128,7 +129,7 @@ const admindashboardRoutes = [
     component: ViewBatches
   },
   {
-    path: "/ViewBatcheStudents",
+    path: "/ViewBatchStudents",
     name: "View Batch Students",
     icon: "pe-7s-news-paper",
     component: ViewBatchStudents
@@ -138,6 +139,12 @@ const admindashboardRoutes = [
     name: "Student Details",
     icon: "pe-7s-display1",
     component: StudentDetails
+  },
+  {
+    path: "/DownloadCodes",
+    name: "Download Codes of students",
+    icon: "pe-7s-display1",
+    component: DownloadCodes
   },
   /*{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },

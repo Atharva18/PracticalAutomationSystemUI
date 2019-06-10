@@ -8,6 +8,7 @@ import { Anchor } from 'antd';
 import { createHashHistory } from 'history'
 
 var map1=new Map();
+var map2=new Map();
 export const history = createHashHistory()
 
 export class ViewBatchStudents extends Component {
@@ -25,38 +26,45 @@ export class ViewBatchStudents extends Component {
         }
     };
 
-    // componentDidMount() {
-    //     alert(this.state.batch_name);
-    //     console.log(this.state.batch_name)
-    //     alert(this.state.subject);
-    //     console.log(this.state.subject)
-    //     fetch('http://localhost:8023/find-batch_students',{
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             batch_name: this.state.batch_name,
-    //             subject:this.state.subject
-    //         }),
-    //         headers: { "Content-Type": "application/json" }
-    //     })
+    handleSubmit1 (e){
+        e.preventDefault();
+        history.push({
+           pathname: '/DownloadCodes',
+          })
+    }
+
+    componentDidMount() {
+        alert(this.state.batch_name);
+        console.log(this.state.batch_name)
+        alert(this.state.subject);
+        console.log(this.state.subject)
+        fetch('http://localhost:8023/find-batch_students',{
+            method: 'POST',
+            body: JSON.stringify({
+                batch_name: this.state.batch_name,
+                subject:this.state.subject
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
         
-    //         .then(res => res.json())
-    //         .then(
-    //             (result) => {
-    //                 console.log(result);
-    //                 this.setState({
-    //                     isLoaded: true,
-    //                     items: result.data
-    //                 });
-    //             },
-    //             (error) => {
-    //                 console.log("In Error");
-    //                 this.setState({
-    //                     isLoaded: true,
-    //                     error
-    //                 });
-    //             }
-    //         )
-    // }
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    this.setState({
+                        isLoaded: true,
+                        items: result.data
+                    });
+                },
+                (error) => {
+                    console.log("In Error");
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
 
     render() {
         const { error, isLoaded, items } = this.state;
@@ -75,45 +83,44 @@ export class ViewBatchStudents extends Component {
                             <Table align='center' striped hover responsive>
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">fName</th>
-                                        <th scope="col">lName</th>
-                                        <th scope="col">email</th>
-                                        <th scope="col">batchname</th>
+                                        <th scope="col">Fname</th>
+                                        <th scope="col">Lname</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    {/* {items.map((item,index) => (
+                            
+                                    {items.map((item,index) => (
                                         <tr>
-                                            <td>{item.user[0]}</td>
-                                             <td align='center'>
-                                            {map1.set(index,item.user)}
-                                           <Button type="submit" onClick={this.handleSubmit1} id={index}>View Details</Button>
-                                           
-                                            </td> 
-                                        </tr>
-                                    ))} */}
-                                    <tbody>
-                                    {items.map(item => (
-                                        <tr>
-                                            {/* <td align="center">
-                                                {item.fname.toUpperCase()}
-                                            </td> */}
-                                            <td align="center">
+                                            <td>
                                                 {
                                                     item.user.map(prog => (
-                                                        <li>{prog.fname}</li>))
+                                                        <h5>{prog.fname}</h5>))
                                                 }
                                             </td>
+                                            <td >
+                                                {
+                                                    item.user.map(prog => (
+                                                        <h5>{prog.lname}</h5>))
+                                                }
+                                                
+                                            </td>
+                                            <td align='center'>
+                                        
+                                           <Button type="submit" onClick={this.handleSubmit1}>Download Codes</Button>
+                                           
+                                            </td> 
+                
+             
                                         </tr>
                                     ))}
-                                </tbody>
                                 </tbody>
                             </Table>
                         }
                     />
                 </Col>
             </div>
+            
                 
             </div>
         )
