@@ -3,12 +3,13 @@ import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap";
 import reqwest from 'reqwest';
+import { PageHeader,message } from 'antd';
 
 
 function addstudents() {
 
-    if (this.state.items.length > 0) { alert('Called!'); }
-
+    if (this.state.items.length > 0) 
+    message.success('Users added successfully')
     fetch('http://localhost:8023/addfrom-csv', {
         method: 'POST',
         body: JSON.stringify({
@@ -19,10 +20,12 @@ function addstudents() {
         .then(response => {
             console.log(response.body);
             if (response.result === 'Success') {
-                alert('Exported successfully!');
+               // alert('Exported successfully!');
+               message.success('Users added successfully')
             }
             else if (response.result === 'Failure') {
-                alert(response.result);
+               // alert(response.result);
+               message.error('Error adding users!Please try again')
             }
         });
 

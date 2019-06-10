@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,
+  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,message
 } from 'antd';
 import 'antd/dist/antd.css'
 import Sidebar from "components/Sidebar/Sidebar";
@@ -47,11 +47,13 @@ class RegistrationForm extends React.Component {
           console.log(response.body);
           if (response.result === 'Success') {
 
-             alert(response.result);
+             //alert(response.result);
+             message.success('User added successfully')
           }
           else
           {
-            alert(response.result);
+            //alert(response.result);
+            message.error('Error adding user')
           }
       });
   }

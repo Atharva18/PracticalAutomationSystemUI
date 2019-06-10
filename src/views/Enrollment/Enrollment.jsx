@@ -4,7 +4,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
-
+import {message } from 'antd';
 
 function addCheckbox() 
 {
@@ -155,7 +155,7 @@ function enrollstudents(e)
                 console.log(response.body);
                 if (response.result === 'Success') {
 
-                    alert('SUCCESS');
+                    message.success('Users added successfully')
                 }
                 else
                 {
