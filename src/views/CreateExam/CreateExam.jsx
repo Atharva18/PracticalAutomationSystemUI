@@ -73,10 +73,10 @@ export class CreateExam extends Component {
                         isLoaded: true,
                         items: response.data
                     });
-                    alert(this.state.items);
+                   // alert(this.state.items);
                 }
                 else {
-                    alert(response.result);
+                   // alert(response.result);
                 }
             });
     }
@@ -100,7 +100,6 @@ export class CreateExam extends Component {
         return (
             <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
                 <Sidebar {...this.props} />
-                <Header {...this.props} />
                 <Row>
                     <Col span={12} offset={6} >
                         <Card title="Create Exam" bordered={true} style={{ padding: '30px', width: '80%', margin: '30px', height: '90%' }}>
@@ -127,11 +126,12 @@ export class CreateExam extends Component {
                                     <div>
                         
                                 {items.map((item,index) => {
+                                     {map1.set(index,item.course)}
                                     return (
                                         <tr>
                                             <td align='center'>{item.course.toUpperCase()}</td>
                                             <td align='center'>
-                                            {map1.set(index,item.course)}
+                                           
                                            <Button type="submit" onClick={this.handleSubmit1} id={index}>Create Exam</Button>
                                            
                                             </td>

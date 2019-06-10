@@ -2,8 +2,8 @@ import React from 'react';
 //import { Card } from "components/Card/Card.jsx";
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
-import { Grid, Row, Col, Table, Button } from "react-bootstrap"
-import { PageHeader } from 'antd';
+import { Grid, Row, Col, Table ,Button} from "react-bootstrap"
+import { PageHeader,message } from 'antd';
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
 class AddRole extends React.Component {
@@ -44,6 +44,7 @@ class AddRole extends React.Component {
                     }
                     newStateArray.push(obj);
                     this.setState({ items: newStateArray, text: '' })
+                    message.success('Role created successfully')
                 }
             });
     }
@@ -74,9 +75,8 @@ class AddRole extends React.Component {
         return (
             <div align="left">
                 <Sidebar {...this.props} /> 
-                
                 <div align='left'id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
+                
                     <Col md={12}>
                         <Card
                             title="ADD ROLE"

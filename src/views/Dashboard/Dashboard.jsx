@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import { Grid, Row, Col, Table ,Button} from "react-bootstrap"
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Sidebar from "components/Sidebar/Sidebar";
 import Background from '../../assets/img/pcce.png';
 import Header from "components/Header/Header";
 import admindashboardRoutes from "routes/admindashboard.jsx";
 import ChartistGraph from "react-chartist";
-import { Grid, Row, Col } from "react-bootstrap";
+
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
@@ -168,11 +168,42 @@ class Dashboard extends Component {
            </Row>
          </Grid>
        </div>*/
-      <div align="left">
+      <div >
         <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
           <Sidebar {...this.props} />
-         
-          </div>
+          <Col md={12}>
+            <Card
+              title="Online Practical Automation System"
+              category="Instructions"
+              ctTableFullWidth
+              ctTableResponsive
+              content={
+                <Table striped hover responsive='sm'>
+                  <thead>
+                    <tr>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <p> There are three roles by default: ADMIN,STUDENT & FACULTY</p>
+                   <tr> <p> Add roles can be used to create new roles</p></tr>
+                    <tr><p> Single as well as multiple users can be enrolled</p></tr>
+                    <tr><p>For creating exam, use create exam option.</p></tr> <p>For further queries contact janamejaykeskar@gmail.com</p>
+                    </tr>
+                    
+                    
+                
+                  </tbody>
+                </Table>
+              }
+            />
+          </Col>
+
+
+
+
+        </div>
 
       </div>
     );

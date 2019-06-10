@@ -17,9 +17,10 @@ import admindashboardRoutes from 'routes/admindashboard.jsx'
 import facultydashboardRoutes from 'routes/facultydashboard.jsx'
 import proctordashboardRoutes from 'routes/proctordashboard.jsx'
 import studentdashboardRoutes from 'routes/studentdashboard.jsx'
+
 import PropTypes from 'prop-types';
 import {
-  Modal,message
+  Modal, message
 } from 'antd';
 import "antd/dist/antd.css";
 
@@ -105,7 +106,7 @@ class Login extends React.Component {
 
     if (isAuthenticated && role == 'admin') {
 
-     // message.success('Success!')
+      // message.success('Success!')
 
       return (
         <div align='center'>
@@ -171,7 +172,7 @@ class Login extends React.Component {
     else {
       return (
         <div align='center' style={divStyle}>
-          <Grid style={{ paddingTop: "50px", width: "40%", height: "60%" }}>
+         <Grid style={{ paddingTop: "50px", width: "40%", height: "60%" }}>
             <Card style={{ width: '20rem' }}
               title="LOGIN"
               content=
@@ -195,10 +196,17 @@ class Login extends React.Component {
             />
           </Grid>
         </div>
-      )
+          
+          )
+        }
+      }
     }
-  }
-}
+    
+    
+    export default Login;
+    /*
+    
 
 
-export default Login;
+
+          */

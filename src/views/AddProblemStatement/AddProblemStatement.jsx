@@ -6,6 +6,7 @@ import { Grid, Row, Col, Table,Button } from "react-bootstrap"
 
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
+import { message } from 'antd';
 class AddProblemStatement extends React.Component {
     constructor(props) {
         super(props);
@@ -36,9 +37,10 @@ class AddProblemStatement extends React.Component {
         }).then(response => response.json())
             .then(response => {
                 console.log(response.body);
+                message.success('Success!')
                 if (response.result === 'Success') {
 
-                    alert('Added Succesfully');
+                   
                 }
             });
     }
@@ -62,9 +64,16 @@ class AddProblemStatement extends React.Component {
                             <form onSubmit={this.onSubmit}>
                             <div align="center">
                             Subject:<input type="text"  value={subject}   ></input>
+                            <label>Subject </label>
+                            <br></br>
+                            <input type="textarea" required pattern='[A-Za-z]+' value={subject}   ></input>
                             <br></br>
                             <br></br>
-                            Statement:<input type="text" onChange={this.handleChange} ></input>
+                            <label>Statement </label>
+                            <br></br>
+                            <textarea name='message' rows="10" cols="30" onChange={this.handleChange} />
+                            <br></br>
+                            <br></br>
                             <Button variant="primary" type="submit" name="submit" value="Submit">SUBMIT</Button>
                             </div>
                         </form>

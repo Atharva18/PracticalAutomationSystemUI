@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import Sidebar from "components/Sidebar/Sidebar";
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
 import admindashboardRoutes from 'routes/admindashboard.jsx';
-import Header from "components/Header/Header";
 import "antd/dist/antd.css";
 import { Table } from "react-bootstrap"
 import {
-    Form, Input, Select, Button, Row, Col, Card
+    Form, Input, Select, Button, Row, Col, Card,message
 } from 'antd';
 const Option = Select.Option;
 const tabList = [{
@@ -72,10 +71,11 @@ export class AddSubject extends Component {
                 console.log(response.body);
                 if (response.result === 'Success') {
 
-                    alert(response.result);
+                   // alert(response.result);
+                   message.success('Success!')
                 }
                 else {
-                    alert(response.result);
+                    //alert(response.result);
                 }
             });
     }
@@ -121,7 +121,6 @@ export class AddSubject extends Component {
         const { error, isLoaded, items } = this.state;
         return (
             <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
             <div style={{ padding: '30px', width: '50%', margin: '30px', height: '50%' }}>
                 <Row gutter={16}>
                     <Col span={15}>
@@ -155,30 +154,7 @@ export class AddSubject extends Component {
                         </Card>
                     </Col>
             
-                    <Col span={8}>
-                        <Card title="Avaiilable Subjects" bordered={true}>
-                        <div>
-                        <Table striped hover responsive='sm'>
-                        <thead>
-                                <tr>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {items.map((item) => {
-                                    return (
-                                        <tr>
-                                            <td align='center'>{item.Type.toUpperCase()}</td>
-                                            <td align='center'>
-                                                <h5>EDIT</h5>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                            
-                        </Table></div></Card>
-                    </Col>
+                   
                 </Row>
             </div>
             </div>

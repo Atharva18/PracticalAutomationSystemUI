@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import Sidebar from "components/Sidebar/Sidebar";
 import {
-    Row, Col, Card, DatePicker, Input, Button
+    Row, Col, Card, DatePicker, Input, Button,message
 } from 'antd';
 import { createHashHistory } from 'history'
-import Header from "components/Header/Header";
 import Enrollment from "views/Enrollment/Enrollment";
 export const history = createHashHistory()
 const { MonthPicker, RangePicker} = DatePicker;
@@ -51,10 +50,11 @@ export class ConfirmExam extends Component {
                 console.log(response.body);
                 if (response.result === 'Success') {
 
-                    alert(response.result);
+                    //alert(response.result);
+                    message.success('Exam created successfully')
                 }
                 else {
-                    alert(response.result);
+                    //alert(response.result);
                 }
             });
             history.push({
@@ -66,10 +66,8 @@ export class ConfirmExam extends Component {
     render() {
         return (
             <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
-                 <Header {...this.props} />
             <div style={{ padding: '30px', width: '50%', margin: '30px', height: '50%' }}>
                 <Sidebar {...this.props} />
-               
                 <Row gutter={16}>
                     <Col span={15}>
                         <Card title="Confirm Exam" bordered={true}>

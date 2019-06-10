@@ -3,7 +3,7 @@ import React from 'react';
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import { Grid, Row, Col, Table,Button } from "react-bootstrap"
-
+import { PageHeader,message } from 'antd';
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
 class AddBranch extends React.Component {
@@ -43,6 +43,7 @@ class AddBranch extends React.Component {
                     }
                     newStateArray.push(obj);
                     this.setState({ items: newStateArray, text: '' })
+                    message.success('Success!')
                 }
             });
     }

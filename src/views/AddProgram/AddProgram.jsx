@@ -5,7 +5,7 @@ import Header from "components/Header/Header";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import Card from "components/Card/Card.jsx";
 import PropTypes from 'prop-types';
-
+import { message } from 'antd';
 class AddProgram extends React.Component {
     constructor(props) {
         super(props);
@@ -46,6 +46,8 @@ class AddProgram extends React.Component {
             .then(response => {
                 
                 if (response.result === 'Success') {
+
+                    message.success('Program added successfully')
                     var newStateArray = this.state.items.slice();
                     var obj =
                     {

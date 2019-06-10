@@ -185,7 +185,7 @@ input:focus {
   margin-top: 50px; }
 
 .wrapper {
-  position: absolute;
+  position: relative;
   top: 0;
   height: 100vh; }
 

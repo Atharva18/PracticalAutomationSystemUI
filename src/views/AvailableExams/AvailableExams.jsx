@@ -4,7 +4,6 @@ import Card from "components/Card/Card.jsx";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap"
 import { Anchor } from 'antd';
 import { createHashHistory } from 'history'
-import Header from "components/Header/Header";
 
 var map1=new Map();
 
@@ -62,9 +61,7 @@ export class AvailableExams extends Component {
         return (
             <div>
                 <Sidebar {...this.props} />
-               
                 <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
                 <Col md={12}>
                     <Card
                         title="AVAILABLE Exams"
