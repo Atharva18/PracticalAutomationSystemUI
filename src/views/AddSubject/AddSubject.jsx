@@ -154,30 +154,7 @@ export class AddSubject extends Component {
                         </Card>
                     </Col>
             
-                    <Col span={8}>
-                        <Card title="Avaiilable Subjects" bordered={true}>
-                        <div>
-                        <Table striped hover responsive='sm'>
-                        <thead>
-                                <tr>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {items.map((item) => {
-                                    return (
-                                        <tr>
-                                            <td align='center'>{item.Type.toUpperCase()}</td>
-                                            <td align='center'>
-                                                <h5>EDIT</h5>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                            
-                        </Table></div></Card>
-                    </Col>
+                   
                 </Row>
             </div>
             </div>
