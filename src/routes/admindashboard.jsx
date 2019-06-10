@@ -114,13 +114,13 @@ const admindashboardRoutes = [
     name: "Typography",
     icon: "pe-7s-news-paper",
     component: Typography
-  },*/
+  },
   {
     path: "/ViewStudents",
     name: "View Students",
     icon: "pe-7s-users",
     component: ViewStudents
-  },
+  },*/
   {
     path: "/ViewBatches",
     name: "View Batches",

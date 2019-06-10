@@ -5,7 +5,7 @@ import admindashboardRoutes from 'routes/admindashboard.jsx';
 import "antd/dist/antd.css";
 import { Table } from "react-bootstrap"
 import {
-    Form, Input, Select, Button, Row, Col, Card
+    Form, Input, Select, Button, Row, Col, Card,message
 } from 'antd';
 const Option = Select.Option;
 const tabList = [{
@@ -71,10 +71,11 @@ export class AddSubject extends Component {
                 console.log(response.body);
                 if (response.result === 'Success') {
 
-                    alert(response.result);
+                   // alert(response.result);
+                   message.success('Success!')
                 }
                 else {
-                    alert(response.result);
+                    //alert(response.result);
                 }
             });
     }

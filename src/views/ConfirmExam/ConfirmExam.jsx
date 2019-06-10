@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Sidebar from "components/Sidebar/Sidebar";
 import {
-    Row, Col, Card, DatePicker, Input, Button
+    Row, Col, Card, DatePicker, Input, Button,message
 } from 'antd';
 import { createHashHistory } from 'history'
 import Enrollment from "views/Enrollment/Enrollment";
@@ -50,10 +50,11 @@ export class ConfirmExam extends Component {
                 console.log(response.body);
                 if (response.result === 'Success') {
 
-                    alert(response.result);
+                    //alert(response.result);
+                    message.success('Exam created successfully')
                 }
                 else {
-                    alert(response.result);
+                    //alert(response.result);
                 }
             });
             history.push({
