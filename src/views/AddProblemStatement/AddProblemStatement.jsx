@@ -63,10 +63,13 @@ class AddProblemStatement extends React.Component {
 
                             <form onSubmit={this.onSubmit}>
                             <div align="center">
-                            Subject <input type="textarea" required pattern='[A-Za-z]+' value={subject}   ></input>
+                            <label>Subject </label>
+                            <br></br>
+                            <input type="textarea" required pattern='[A-Za-z]+' value={subject}   ></input>
                             <br></br>
                             <br></br>
-                            Statement 
+                            <label>Statement </label>
+                            <br></br>
                             <textarea name='message' rows="10" cols="30" onChange={this.handleChange} />
                             <br></br>
                             <br></br>
