@@ -75,9 +75,8 @@ class AddRole extends React.Component {
         return (
             <div align="left">
                 <Sidebar {...this.props} /> 
-                
                 <div align='left'id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
+                
                     <Col md={12}>
                         <Card
                             title="ADD ROLE"

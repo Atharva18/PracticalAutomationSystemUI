@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Sidebar from "components/Sidebar/Sidebar";
 import Dashboard from 'layouts/Dashboard/Dashboard.jsx';
 import admindashboardRoutes from 'routes/admindashboard.jsx';
-import Header from "components/Header/Header";
 import "antd/dist/antd.css";
 import { Table } from "react-bootstrap"
 import {
@@ -121,7 +120,6 @@ export class AddSubject extends Component {
         const { error, isLoaded, items } = this.state;
         return (
             <div align='left' id="main-panel" className="main-panel" ref="mainPanel">
-                <Header {...this.props} />
             <div style={{ padding: '30px', width: '50%', margin: '30px', height: '50%' }}>
                 <Row gutter={16}>
                     <Col span={15}>
