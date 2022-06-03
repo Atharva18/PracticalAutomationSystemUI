@@ -7,7 +7,7 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 class TableList extends Component {
   render() {
     return (
-      <div className="content">
+      <div className="content"> 
         <Grid fluid>
           <Row>
             <Col md={12}>

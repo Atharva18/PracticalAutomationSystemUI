@@ -3,7 +3,11 @@ import { Navbar } from "react-bootstrap";
 
 import HeaderLinks from "./HeaderLinks.jsx";
 
-import dashboardRoutes from "routes/dashboard.jsx";
+import admindashboardRoutes from "routes/admindashboard.jsx";
+import facultydashboardRoutes from "routes/facultydashboard.jsx";
+import proctordashboardRoutes from "routes/proctordashboard.jsx";
+import studentdashboardRoutes from "routes/studentdashboard.jsx";
+
 
 class Header extends Component {
   constructor(props) {
@@ -31,7 +35,10 @@ class Header extends Component {
   }
   getBrand() {
     var name;
-    dashboardRoutes.map((prop, key) => {
+    let role= sessionStorage.getItem('type');
+    if(role=='admin')
+    {
+    admindashboardRoutes.map((prop, key) => {
       if (prop.collapse) {
         prop.views.map((prop, key) => {
           if (prop.path === this.props.location.pathname) {
@@ -52,6 +59,79 @@ class Header extends Component {
       }
       return null;
     });
+    }else if (role=='faculty')
+    {
+
+      facultydashboardRoutes.map((prop, key) => {
+        if (prop.collapse) {
+          prop.views.map((prop, key) => {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+            return null;
+          });
+        } else {
+          if (prop.redirect) {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          } else {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          }
+        }
+        return null;
+      });
+    }
+    else if(role=='proctor')
+    {
+      proctordashboardRoutes.map((prop, key) => {
+        if (prop.collapse) {
+          prop.views.map((prop, key) => {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+            return null;
+          });
+        } else {
+          if (prop.redirect) {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          } else {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          }
+        }
+        return null;
+      });
+    }
+    else if(role=='user')
+    {
+      studentdashboardRoutes.map((prop, key) => {
+        if (prop.collapse) {
+          prop.views.map((prop, key) => {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+            return null;
+          });
+        } else {
+          if (prop.redirect) {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          } else {
+            if (prop.path === this.props.location.pathname) {
+              name = prop.name;
+            }
+          }
+        }
+        return null;
+      });
+    }
     return name;
   }
   render() {
@@ -59,7 +139,7 @@ class Header extends Component {
       <Navbar fluid>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#pablo">{this.getBrand()}</a>
+            <a href="/dashboard">{this.getBrand()}</a>
           </Navbar.Brand>
           <Navbar.Toggle onClick={this.mobileSidebarToggle} />
         </Navbar.Header>

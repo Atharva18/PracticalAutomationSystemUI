@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+import {
+  message, Modal
+} from 'antd';
+import "antd/dist/antd.css";
+const confirm = Modal.confirm;
 
 class HeaderLinks extends Component {
+
+
   render() {
     const notification = (
       <div>
@@ -12,6 +19,7 @@ class HeaderLinks extends Component {
       </div>
     );
     return (
+      
       <div>
         <Nav>
           <NavItem eventKey={1} href="#">
@@ -52,7 +60,33 @@ class HeaderLinks extends Component {
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={3} href="#">
+          <NavItem eventKey={3} onClick=
+          {
+            ()=>{
+
+              confirm({
+                title: 'Are you sure you want to logout?',
+                okText:'Yes',
+                cancelText:'No', 
+                onOk() {
+                  return new Promise((resolve, reject) => {
+                    //setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+                    message.success('You are successfully logged out!')
+                    sessionStorage.clear();
+                    document.location.href = "/"; 
+                   
+                  }).catch(() => console.log('Oops errors!'));
+                },
+                onCancel() {
+
+                  
+
+                },
+              });
+
+             
+            }
+          }>
             Log out
           </NavItem>
         </Nav>
@@ -60,5 +94,7 @@ class HeaderLinks extends Component {
     );
   }
 }
+
+
 
 export default HeaderLinks;
