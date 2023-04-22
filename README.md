@@ -1,1 +1,1 @@
-# Frontend for Practical Automation System
+# ReactJS Frontend for final year project - Practical Automation System
